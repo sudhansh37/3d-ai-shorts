@@ -3,7 +3,7 @@
   "resolution_percent": 100,
   "fps": 24,
   "render_engine": "CYCLES",
-  "cycles_samples": 24,
+  "cycles_samples": 10,
   "max_duration_sec": 20,
   "gemini_model": "gemini-flash-lite-latest",
   "use_fallback_scene": true,
