@@ -1,0 +1,59 @@
+{
+  "title": "Hero ki subah ki daud aur wave!",
+  "description": "Hero ghar se bhaag kar doosre ghar ke paas pahuncha. #shorts #3dstory #hero",
+  "tags": [
+    "shorts",
+    "3dstory",
+    "hero"
+  ],
+  "scene": {
+    "duration": 15,
+    "characters": [
+      {
+        "id": "hero",
+        "actions": [
+          {
+            "animation": "walk",
+            "from": "house_1",
+            "to": "road_start",
+            "duration": 3
+          },
+          {
+            "animation": "run",
+            "from": "road_start",
+            "to": "road_center",
+            "duration": 4
+          },
+          {
+            "animation": "run",
+            "from": "road_center",
+            "to": "house_2",
+            "duration": 4
+          },
+          {
+            "animation": "wave",
+            "location": "house_2",
+            "duration": 4
+          }
+        ]
+      }
+    ]
+  },
+  "camera": [
+    {
+      "type": "closeup",
+      "target": "hero",
+      "duration": 4
+    },
+    {
+      "type": "follow",
+      "target": "hero",
+      "duration": 7
+    },
+    {
+      "type": "wide",
+      "target": "hero",
+      "duration": 4
+    }
+  ]
+}
