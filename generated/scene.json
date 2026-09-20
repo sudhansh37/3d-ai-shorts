@@ -1,10 +1,10 @@
 {
-  "title": "Hero ki subah ki daud aur wave!",
-  "description": "Hero ghar se bhaag kar doosre ghar ke paas pahuncha. #shorts #3dstory #hero",
+  "title": "Hero ki Road Walk aur Run Adventure",
+  "description": "Hero road par chalta hai aur wapas ghar daudta hai. #shorts #viral #3d",
   "tags": [
     "shorts",
-    "3dstory",
-    "hero"
+    "viral",
+    "3d_animation"
   ],
   "scene": {
     "duration": 15,
@@ -15,25 +15,19 @@
           {
             "animation": "walk",
             "from": "house_1",
-            "to": "road_start",
+            "to": "road_center",
+            "duration": 5
+          },
+          {
+            "animation": "idle",
+            "location": "road_center",
             "duration": 3
           },
           {
             "animation": "run",
-            "from": "road_start",
-            "to": "road_center",
-            "duration": 4
-          },
-          {
-            "animation": "run",
             "from": "road_center",
-            "to": "house_2",
-            "duration": 4
-          },
-          {
-            "animation": "wave",
-            "location": "house_2",
-            "duration": 4
+            "to": "house_1",
+            "duration": 7
           }
         ]
       }
@@ -41,19 +35,19 @@
   },
   "camera": [
     {
-      "type": "closeup",
-      "target": "hero",
-      "duration": 4
-    },
-    {
       "type": "follow",
       "target": "hero",
-      "duration": 7
+      "duration": 5
     },
     {
-      "type": "wide",
+      "type": "closeup",
       "target": "hero",
-      "duration": 4
+      "duration": 3
+    },
+    {
+      "type": "side_tracking",
+      "target": "hero",
+      "duration": 7
     }
   ]
 }

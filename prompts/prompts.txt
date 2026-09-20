@@ -1,6 +1,5 @@
 # Roz ek line use hoti hai (upar se neeche). Naye prompts yaha add karte raho.
 # '#' se shuru hone wali lines skip hoti hain. Khali ho jaye to config ka default_prompt use hoga.
-Hero road par chalta hai, ped ke paas jaakar rukta hai, idhar-udhar dekhta hai aur phir wapas ghar ki taraf daudta hai.
 Hero ghar ke bahar khada hokar baat karta hai, phir khushi se jump karta hai aur ghar ke andar chala jaata hai.
 Hero road par daudta hai, ped ke paas ruk kar attack karta hai aur phir aage badhta hai.
 Hero ghar se bahar aakar baith jaata hai, thodi der baad uthkar road par chalne lagta hai.
