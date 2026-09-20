@@ -1,33 +1,32 @@
 {
-  "title": "Hero ki Road Walk aur Run Adventure",
-  "description": "Hero road par chalta hai aur wapas ghar daudta hai. #shorts #viral #3d",
+  "title": "Hero ki khushi aur dance #Shorts #Hero #Fun",
+  "description": "Hero ghar ke bahar khada hokar baat karta hai aur fir khushi se jump karta hai. #Viral #Trending #Animation",
   "tags": [
-    "shorts",
-    "viral",
-    "3d_animation"
+    "Shorts",
+    "Hero",
+    "Animation"
   ],
   "scene": {
-    "duration": 15,
+    "duration": 12,
     "characters": [
       {
         "id": "hero",
         "actions": [
           {
+            "animation": "talk",
+            "location": "house_1",
+            "duration": 4
+          },
+          {
+            "animation": "jump",
+            "location": "house_1",
+            "duration": 3
+          },
+          {
             "animation": "walk",
             "from": "house_1",
             "to": "road_center",
             "duration": 5
-          },
-          {
-            "animation": "idle",
-            "location": "road_center",
-            "duration": 3
-          },
-          {
-            "animation": "run",
-            "from": "road_center",
-            "to": "house_1",
-            "duration": 7
           }
         ]
       }
@@ -35,19 +34,19 @@
   },
   "camera": [
     {
-      "type": "follow",
+      "type": "closeup",
       "target": "hero",
-      "duration": 5
+      "duration": 4
     },
     {
-      "type": "closeup",
+      "type": "medium",
       "target": "hero",
       "duration": 3
     },
     {
-      "type": "side_tracking",
+      "type": "follow",
       "target": "hero",
-      "duration": 7
+      "duration": 5
     }
   ]
 }
