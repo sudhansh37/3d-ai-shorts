@@ -1,0 +1,14 @@
+# Roz ek line use hoti hai (upar se neeche). Naye prompts yaha add karte raho.
+# '#' se shuru hone wali lines skip hoti hain. Khali ho jaye to config ka default_prompt use hoga.
+Hero ghar se bahar nikalta hai, road par daudta hai aur doosre ghar ke saamne khada hokar haath hilata hai. Cinematic camera.
+Hero road par chalta hai, ped ke paas jaakar rukta hai, idhar-udhar dekhta hai aur phir wapas ghar ki taraf daudta hai.
+Hero ghar ke bahar khada hokar baat karta hai, phir khushi se jump karta hai aur ghar ke andar chala jaata hai.
+Hero road par daudta hai, ped ke paas ruk kar attack karta hai aur phir aage badhta hai.
+Hero ghar se bahar aakar baith jaata hai, thodi der baad uthkar road par chalne lagta hai.
+Hero ped ke neeche baithta hai, phir uth kar road par daudta hai aur doosre ghar ke paas haath hilata hai.
+Hero road ke beech me khada rehta hai, idhar-udhar ghoorta hai, phir ghar ki taraf bhaagta hai.
+Hero ghar ke aage khada hokar bolta hai, phir jump karta hai aur daudte hue door jaata hai.
+Hero road par chal-chal kar ped tak jaata hai aur wapas aakar haath hilata hai.
+Hero doosre ghar ke paas se daudta aata hai, road ke beech rukta hai aur upar dekhta hai.
+Hero ghar se nikalta hai, ped ke paas jaata hai, phir car ke paas jaakar dekhta hai aur wapas mudta hai.
+Hero road par daudta hai, ghar ke paas rukta hai, haath hilata hai aur andar chala jaata hai.

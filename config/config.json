@@ -1,0 +1,14 @@
+{
+  "resolution": [720, 1280],
+  "resolution_percent": 100,
+  "fps": 24,
+  "render_engine": "CYCLES",
+  "cycles_samples": 24,
+  "max_duration_sec": 20,
+  "gemini_model": "gemini-flash-lite-latest",
+  "use_fallback_scene": true,
+  "character_face_offset_deg": 0,
+  "youtube_privacy": "private",
+  "youtube_category_id": "1",
+  "default_prompt": "Hero ghar se bahar nikalta hai, road par daudta hai aur doosre ghar ke saamne khada hokar haath hilata hai. Camera cinematic ho."
+}
