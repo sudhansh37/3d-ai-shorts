@@ -1,0 +1,41 @@
+name: YouTube Auth
+
+# ONE-TIME setup workflow. Ye logs me refresh token print karta hai,
+# isliye jab tak ye chal raha ho repo PRIVATE rakho, run ke baad delete kar do.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "start = auth URL banao | exchange = code ko token me badlo"
+        required: true
+        default: "start"
+        type: choice
+        options: [start, exchange]
+      redirect_url:
+        description: "exchange mode me login ke baad ka POORA localhost URL paste karo"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  auth:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run auth
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+        run: |
+          pip install requests
+          python scripts/youtube_auth.py ${{ github.event.inputs.mode }} \
+            --client-id "$GOOGLE_CLIENT_ID" \
+            --client-secret "$GOOGLE_CLIENT_SECRET" \
+            --redirect-url "${{ github.event.inputs.redirect_url }}"

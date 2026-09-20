@@ -1,0 +1,1 @@
+# generated/ folder - har run ka scene JSON yahan save hota hai (git me track hota hai).

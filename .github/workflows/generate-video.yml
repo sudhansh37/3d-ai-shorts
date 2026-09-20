@@ -1,0 +1,91 @@
+name: Generate Video
+
+on:
+  schedule:
+    - cron: "30 15 * * *"   # roz raat 21:00 IST (15:30 UTC)
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: "Custom prompt (khali chhodo to prompts.txt se agla uth jayega)"
+        required: false
+        default: ""
+      skip_upload:
+        description: "YouTube upload skip karna hai? (true/false)"
+        required: false
+        default: "false"
+
+concurrency:
+  group: generate-video
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 170
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python deps
+        run: pip install -r requirements.txt
+
+      - name: Download Blender (latest 4.5.x)
+        run: |
+          mkdir -p blender_bin
+          VER=$(curl -s https://download.blender.org/release/Blender4.5/ \
+            | grep -oE 'blender-4\.5\.[0-9]+-linux-x64\.tar\.xz' | sort -uV | tail -1)
+          echo "Downloading $VER ..."
+          curl -sL "https://download.blender.org/release/Blender4.5/$VER" \
+            | tar -xJ -C blender_bin --strip-components=1
+          ./blender_bin/blender --version
+
+      - name: Generate scene JSON (Gemini)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python scripts/generate_scene.py \
+            --prompt "${{ github.event.inputs.prompt || '' }}" \
+            --out generated/scene.json
+
+      - name: Render (Blender headless)
+        run: |
+          mkdir -p output
+          ./blender_bin/blender -b -P blender/automation.py -- \
+            --scene generated/scene.json \
+            --config config/config.json \
+            --locations config/locations.json \
+            --assets assets \
+            --out output
+          ls -la output/
+
+      - name: Upload to YouTube
+        if: ${{ github.event.inputs.skip_upload != 'true' }}
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python scripts/youtube_upload.py --video output/video.mp4 --json generated/scene.json
+
+      - name: Save video artifact (download ke liye)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: video-${{ github.run_id }}
+          path: output/video.mp4
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Commit results (repo active rakhna zaroori - 60 din rule ka fix)
+        if: always()
+        run: |
+          git config user.name "shorts-bot"
+          git config user.email "action@github.com"
+          git add generated/scene.json prompts/prompts.txt prompts/used.txt
+          git commit -m "video: $(date -u +'%Y-%m-%d %H:%M UTC') [skip ci]" || echo "kuch naya commit karne ko nahi"
+          git push
