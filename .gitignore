@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+output/
+generated/*.mp4
+generated/*.blend
+generated/*.png
+*.blend1
+*.blend2
+.DS_Store
