@@ -138,10 +138,10 @@ def get_character(assets_dir, start_location):
     root = bpy.data.objects.new("hero", None)
     root.empty_display_size = 0.3
     scene.collection.objects.link(root)
-    bpy.ops.mesh.primitive_capsule_add(radius=0.3, depth=0.9, location=(0, 0, 1.05))
+    bpy.ops.mesh.primitive_cylinder_add(radius=0.28, depth=0.95, location=(0, 0, 1.0))
     body = bpy.context.active_object
     body.name = "hero_body"
-    bpy.ops.mesh.primitive_uv_sphere_add(radius=0.22, location=(0, 0, 1.75))
+    bpy.ops.mesh.primitive_uv_sphere_add(radius=0.22, location=(0, 0, 1.72))
     head = bpy.context.active_object
     head.name = "hero_head"
     hero_mat = _mat("hero_mat", (0.9, 0.6, 0.1, 1.0))

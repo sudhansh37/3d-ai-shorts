@@ -88,4 +88,5 @@ jobs:
           git config user.email "action@github.com"
           git add generated/scene.json prompts/prompts.txt prompts/used.txt
           git commit -m "video: $(date -u +'%Y-%m-%d %H:%M UTC') [skip ci]" || echo "kuch naya commit karne ko nahi"
+          git pull --rebase origin main || echo "pull rebase fail - phir bhi push try"
           git push
