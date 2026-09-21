@@ -4,6 +4,27 @@ import os
 import bpy
 
 
+def _configure_cycles_device(scene):
+    """GPU setup: OptiX -> CUDA -> CPU fallback. (Kaggle T4/P100 pe GPU milta hai)"""
+    prefs = bpy.context.preferences.addons["cycles"].preferences
+    for dev_type in ("OPTIX", "CUDA"):
+        try:
+            prefs.compute_device_type = dev_type
+            prefs.get_devices()
+            devices = [d for d in prefs.devices if d.type == dev_type]
+            if not devices:
+                continue
+            for d in devices:
+                d.use = True
+            scene.cycles.device = "GPU"
+            print("GPU device: %s x%d" % (dev_type, len(devices)))
+            return "%s x%d" % (dev_type, len(devices))
+        except Exception as e:
+            print("WARN: %s setup fail: %s" % (dev_type, e))
+    scene.cycles.device = "CPU"
+    return "CPU"
+
+
 def setup_render(scene, config, out_dir):
     w, h = config.get("resolution", [720, 1280])
     scene.render.resolution_x = int(w)
@@ -13,9 +34,15 @@ def setup_render(scene, config, out_dir):
     engine = str(config.get("render_engine", "CYCLES")).upper()
     if engine == "CYCLES":
         scene.render.engine = "CYCLES"
-        scene.cycles.device = "CPU"
         scene.cycles.samples = int(config.get("cycles_samples", 24))
         scene.cycles.use_denoising = True
+        pref = str(config.get("cycles_device", "AUTO")).upper()
+        if pref == "CPU":
+            scene.cycles.device = "CPU"
+            dev = "CPU"
+        else:
+            dev = _configure_cycles_device(scene)
+        print("CYCLES_DEVICE: %s" % dev)
     else:
         scene.render.engine = "BLENDER_EEVEE"
 

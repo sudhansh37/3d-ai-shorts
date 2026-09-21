@@ -13,6 +13,12 @@ on:
         description: "YouTube upload skip karna hai? (true/false)"
         required: false
         default: "false"
+      render_backend:
+        description: "Render kahan ho"
+        required: false
+        default: "kaggle"
+        type: choice
+        options: [kaggle, actions]
 
 concurrency:
   group: generate-video
@@ -20,6 +26,10 @@ concurrency:
 
 permissions:
   contents: write
+
+env:
+  KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+  KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
 
 jobs:
   generate:
@@ -33,9 +43,9 @@ jobs:
           python-version: "3.11"
 
       - name: Install Python deps
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt kaggle
 
-      - name: Download Blender (latest 4.5.x)
+      - name: Download Blender (latest 4.5.x) - CPU fallback ke liye
         run: |
           mkdir -p blender_bin
           VER=$(curl -s https://download.blender.org/release/Blender4.5/ \
@@ -53,8 +63,41 @@ jobs:
             --prompt "${{ github.event.inputs.prompt || '' }}" \
             --out generated/scene.json
 
-      - name: Render (Blender headless)
+      - name: Render via Kaggle GPU
+        id: kaggle_render
+        continue-on-error: true
+        if: ${{ github.event.inputs.render_backend != 'actions' && env.KAGGLE_USERNAME != '' }}
         run: |
+          mkdir -p kaggle_build
+          cp kaggle/kernel-metadata.json kaggle_build/
+          python - <<'EOF'
+          scene = open("generated/scene.json").read()
+          src = open("kaggle/kernel.py").read()
+          open("kaggle_build/kernel.py", "w").write(src.replace("{{SCENE_JSON}}", scene))
+          print("kernel ready")
+          EOF
+          kaggle kernels push -p kaggle_build
+          # naya version queue hone do (pehle wale ka status na padh le)
+          sleep 45
+          echo "Kaggle GPU render ka intezaar..."
+          ok=""
+          for i in $(seq 1 90); do
+            ST=$(kaggle kernels status sudhansh37/3d-shorts-render 2>&1 || true)
+            echo "[$i] $ST"
+            echo "$ST" | grep -qi "complete" && { ok=1; break; }
+            echo "$ST" | grep -qiE "error|cancel" && { echo "ERROR: Kaggle kernel fail hua"; exit 1; }
+            sleep 20
+          done
+          if [ -z "$ok" ]; then echo "ERROR: Kaggle kernel 30 min me complete nahi hua"; exit 1; fi
+          mkdir -p output
+          kaggle kernels output sudhansh37/3d-shorts-render -p output/
+          ls -la output/
+          test -f output/video.mp4
+
+      - name: Render (CPU fallback - Actions runner pe)
+        if: ${{ steps.kaggle_render.outcome != 'success' }}
+        run: |
+          echo "Kaggle render skip/fail - CPU pe render kar rahe hain (dheema hota hai)"
           mkdir -p output
           ./blender_bin/blender -b -P blender/automation.py -- \
             --scene generated/scene.json \
