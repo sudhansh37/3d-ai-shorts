@@ -1,31 +1,37 @@
 {
-  "title": "Hero ki khushi aur dance #Shorts #Hero #Fun",
-  "description": "Hero ghar ke bahar khada hokar baat karta hai aur fir khushi se jump karta hai. #Viral #Trending #Animation",
+  "title": "Hero ka Action Move on Road",
+  "description": "Dekho hero kaise road par daudkar attack karta hai! #Action #Hero #Shorts",
   "tags": [
-    "Shorts",
-    "Hero",
-    "Animation"
+    "action",
+    "hero",
+    "shorts"
   ],
   "scene": {
-    "duration": 12,
+    "duration": 15,
     "characters": [
       {
         "id": "hero",
         "actions": [
           {
-            "animation": "talk",
-            "location": "house_1",
-            "duration": 4
+            "animation": "run",
+            "from": "road_start",
+            "to": "road_center",
+            "duration": 5
           },
           {
-            "animation": "jump",
-            "location": "house_1",
+            "animation": "stand",
+            "location": "road_center",
+            "duration": 2
+          },
+          {
+            "animation": "attack",
+            "location": "road_center",
             "duration": 3
           },
           {
             "animation": "walk",
-            "from": "house_1",
-            "to": "road_center",
+            "from": "road_center",
+            "to": "road_end",
             "duration": 5
           }
         ]
@@ -34,17 +40,17 @@
   },
   "camera": [
     {
+      "type": "follow",
+      "target": "hero",
+      "duration": 5
+    },
+    {
       "type": "closeup",
       "target": "hero",
-      "duration": 4
+      "duration": 5
     },
     {
-      "type": "medium",
-      "target": "hero",
-      "duration": 3
-    },
-    {
-      "type": "follow",
+      "type": "wide",
       "target": "hero",
       "duration": 5
     }
