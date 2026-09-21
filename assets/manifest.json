@@ -1,0 +1,21 @@
+{
+  "animations": ["idle", "walk", "run", "wave", "talk", "sit", "attack", "die", "pick_up", "yes", "no", "interact", "jump"],
+  "aliases": {
+    "run": "sprint",
+    "wave": "emote-yes",
+    "talk": "emote-yes",
+    "yes": "emote-yes",
+    "no": "emote-no",
+    "attack": "attack-melee-right",
+    "fight": "attack-melee-right",
+    "die": "die",
+    "fall": "die",
+    "pick_up": "pick-up",
+    "pickup": "pick-up",
+    "interact": "interact-right",
+    "jump": "sprint",
+    "stand": "static",
+    "turn": "idle",
+    "sprint": "sprint"
+  }
+}

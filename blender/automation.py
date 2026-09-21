@@ -40,6 +40,16 @@ def main():
     with open(args.locations) as f:
         locations = json.load(f)
 
+    # animation aliases (assets/manifest.json me ho to)
+    aliases = {}
+    manifest_path = os.path.join(args.assets, "manifest.json")
+    if os.path.isfile(manifest_path):
+        try:
+            with open(manifest_path) as f:
+                aliases = json.load(f).get("aliases") or {}
+        except Exception as e:
+            print("WARN: manifest.json padh nahi paye: %s" % e)
+
     fps = int(config.get("fps", 24))
     scene = bpy.context.scene
     scene.render.fps = fps
@@ -54,9 +64,8 @@ def main():
     hero = characters[0]
     actions = hero.get("actions", [])
     if not actions:
-        fail("hero ke actions khali hain")
+        fail("hero ke actions khale hain")
 
-    # start location
     first = actions[0]
     start_loc = first.get("from") or first.get("location")
     if start_loc not in locations:
@@ -68,10 +77,11 @@ def main():
 
     # 2) character
     root = scene_mod.get_character(args.assets, locations[start_loc])
-    is_proxy = root.type == "EMPTY"
 
     # 3) animation library
     library = animation.collect_animation_library(args.assets)
+    if not library:
+        print("WARN: koi animation library nahi mili - bounce chalega")
 
     # 4) actions -> movement + animation
     face_offset = float(config.get("character_face_offset_deg", 0))
@@ -93,12 +103,11 @@ def main():
                                      start_f, end_f, face_offset)
         else:
             animation.place_character(root, locations[to_loc], start_f)
-        action = animation.find_action(library, anim_name)
+        action = animation.find_action(library, anim_name, aliases)
         if action is None:
-            print("WARN: animation '%s' library me nahi - %s"
-                  % (anim_name, "bounce" if is_proxy else "bounce (real rig pe bhi)"))
-        mode = animation.apply_action(root, action, start_f, end_f, is_proxy)
-        print("Action: %s %s->%s [%s] (%s)" % (anim_name, current_loc, to_loc, mode, act))
+            print("WARN: animation '%s' library me nahi - bounce chalega" % anim_name)
+        mode = animation.apply_action(root, action, start_f, end_f)
+        print("Action: %s %s->%s [%s]" % (anim_name, current_loc, to_loc, mode))
         current_loc = to_loc
         cur_time += dur
 
@@ -117,12 +126,12 @@ def main():
 
     # 6) render
     out_path = render.setup_render(scene, config, args.out)
-    print("Render start ho raha hai (engine=%s, samples=%s, %sx%s)..."
+    print("Render start (engine=%s, samples=%s, %sx%s)..."
           % (config.get("render_engine"), config.get("cycles_samples"),
              config.get("resolution", [720, 1280])[0], config.get("resolution", [720, 1280])[1]))
     bpy.ops.render.render(animation=True)
 
-    # Blender ffmpeg output me frame-range suffix lagata hai (video0001-0360.mp4) - rename karo
+    # Blender ffmpeg output me frame-range suffix lagata hai - rename karo
     mp4s = sorted(glob.glob(os.path.join(args.out, "*.mp4")))
     if mp4s:
         if os.path.exists(out_path):

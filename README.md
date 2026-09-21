@@ -1,124 +1,77 @@
-# 3D AI Shorts - Fully Automated Pipeline
+# 3D AI Shorts - Fully Automated YouTube Pipeline
 
-Gemini se story -> Blender se 3D render -> YouTube pe auto upload. Sab kuch GitHub Actions pe
-chalta hai - PC/GPU ki zaroorat nahi, mobile se hi sab control hota hai.
+Mobile-only, zero-budget, fully-automated 3D YouTube Shorts generator:
 
 ```
-GitHub Actions (roz 21:00 IST, khud chalti hai)
-   -> Gemini API se prompt ka scene JSON
-   -> Blender headless render (vertical 9:16 MP4)
-   -> YouTube Data API v3 se auto upload
-   -> results wapas repo me commit (repo active rehta hai)
+Gemini (story + Hindi narration script)
+   -> scene JSON (locations, actions, camera shots)
+   -> Blender render on Kaggle free GPU (Actions pe CPU fallback)
+   -> Gemini TTS narration (free tier) + ffmpeg me audio merge
+   -> YouTube auto-upload + video artifact
 ```
 
-Abhi assets daale bina bhi chalega - dummy cube houses + capsule hero se poora pipeline test
-ho jaata hai. Baad me `assets/` me apne files daal do.
+Sab kuch GitHub Actions pe roz raat **21:00 IST** apne aap chalta hai. Aapko kuch nahi karna.
 
----
+## Abhi system me kya hai
 
-## SETUP (ek baar karna hai, ~15 minute)
+- **Asli 3D character + animations**: Kenney CC0 blocky character (28 embedded animations - walk, run/sprint, idle, sit, wave, attack, die, pick-up...), Kenney houses, trees. Assets pehle hi download ho jaate hain (`scripts/fetch_assets.sh`). Commercial use bilkul OK - CC0 license.
+- **Gemini TTS narration**: har video me Hindi storytelling voiceover (voice: Kore). Bina awaaz wala fallback bhi safe hai.
+- **Kaggle GPU rendering**: ~5-10 min me render (CPU pe 2-3 ghante lagte the). Kaggle ka free quota: 30 GPU-ghante/week (~100+ videos).
+- **Automation**: roz 21:00 IST khud chalti hai; prompts ki line se agli story uthati hai.
 
-Repo abhi **private** hai - pehle YouTube token bana lo, PHIR public karna (step 5).
+## Setup (ek baar)
 
-### Step 1: Secrets daalo (4 cheezein)
+### Required secrets (Settings -> Secrets and variables -> Actions)
 
-GitHub repo -> **Settings -> Secrets and variables -> Actions -> New repository secret**:
-
-| Secret ka naam | Value kya hai |
+| Secret | Kahan se milega |
 |---|---|
-| `GEMINI_API_KEY` | Tumhara Gemini API key (aistudio.google.com se) |
-| `GOOGLE_CLIENT_ID` | Google Cloud Console -> OAuth client ka Client ID |
-| `GOOGLE_CLIENT_SECRET` | Usi OAuth client ka Client Secret |
-| `YT_REFRESH_TOKEN` | Step 2 me banega (abhi chhod do) |
+| `GEMINI_API_KEY` | aistudio.google.com -> Get API key (free) |
+| `GOOGLE_CLIENT_ID` | Google Cloud Console -> OAuth client (TV/Limited Input type) |
+| `GOOGLE_CLIENT_SECRET` | wahi client ka secret |
+| `YT_REFRESH_TOKEN` | Actions tab -> "YouTube Auth" workflow run karo - token khud print hoga |
+| `KAGGLE_USERNAME` (optional) | kaggle.com -> Settings -> API (GPU render ke liye) |
+| `KAGGLE_KEY` (optional) | wahi kaggle.json wali key |
 
-(Kaggle key abhi nahi chahiye - GPU upgrade baad me. Chaho to `KAGGLE_USERNAME` aur
-`KAGGLE_KEY` bhi add kar sakte ho, future ke liye.)
+Kaggle secrets na ho to CPU pe render hota hai (dheema par kaam karta hai).
 
-### Step 2: YouTube refresh token banao (one-time)
+### Prompt queue
 
-Pehle Google Cloud Console me check karo: APIs & Services -> "YouTube Data API v3" **enabled**
-ho + OAuth consent screen banao (External, test users me apna email add karo).
+`prompts/prompts.txt` me har line ek video idea hai - roz upar wali line use hoti hai. Jaise-jaise khatam hongi, nayi add karte raho (phone se GitHub website par file edit karke).
 
-Phir:
+## Manual run karna ho to
 
-1. Repo -> **Actions** tab -> **YouTube Auth** workflow -> **Run workflow**
-   - mode = `start` -> logs me ek lambi URL milegi
-2. Wahi URL phone ke browser me kholo -> apne Google account se **Allow** karo
-   - page `localhost` pe fail hoga - **YE NORMAL HAI**
-3. Address bar se **poora URL** copy karo (`http://localhost:8080/?code=...` wala)
-4. **YouTube Auth** workflow dobara **Run workflow** karo:
-   - mode = `exchange`
-   - redirect_url = wahi poora URL
-5. Logs me **refresh token** milega -> usko secret banao: `YT_REFRESH_TOKEN`
-6. Us workflow run ko **delete kar do** (run pe click -> ... menu -> Delete workflow run)
-   - kyunki token logs me dikh raha hai
+Actions -> **Generate Video** -> Run workflow. Options:
+- `prompt`: ek hi baar ke liye custom story
+- `skip_upload`: video banega par YouTube pe nahi jayegi
+- `render_backend`: `kaggle` (default, GPU) ya `actions` (CPU)
 
-### Step 3: Test run karo
+Video Actions run ke artifacts me download ho jaati hai (14 din tak rehti hai).
 
-Actions -> **Generate Video** -> Run workflow -> `skip_upload = true` (pehli baar).
-5-30 minute me run green ho jaye to:
-- run ke page pe **Artifacts** section se `video-xxxx` download karke dekho
+## Files
 
-### Step 4: Pehli asli upload
+```
+scripts/generate_scene.py   Gemini -> scene JSON (+narration script)
+scripts/generate_tts.py     Gemini TTS -> narration.wav
+scripts/fetch_assets.sh     CC0 assets download (Kenney)
+scripts/youtube_upload.py   YouTube pe upload
+blender/                    headless render pipeline (scene/animation/camera/render)
+kaggle/kernel.py            Kaggle GPU render kernel
+config/config.json          resolution, samples, TTS voice, models
+config/locations.json       map ke points (house_1, road_center, tree_1...)
+assets/manifest.json         available animations + aliases (run->sprint, wave->emote-yes...)
+prompts/prompts.txt         story ideas queue
+```
 
-- `config/config.json` me `youtube_privacy` check karo (`private` = sirf tum dikhao,
-  `unlisted` = link wale, `public` = sabko)
-- Generate Video -> Run workflow (skip_upload = false)
-- NOTE: Google ka **audit** hone tak API se upload videos private-lock hoti hain -
-  console.developers.google.com pe "Verification" apply karo, uske baad public hongi
+## Troubleshooting
 
-### Step 5: Repo PUBLIC karo (important - free unlimited runs ke liye)
+- **Video me character nahi / pink**: assets download fail hua hoga - "CC0 assets download" step ka log dekho.
+- **Awaaz nahi**: "Narration banao" step me TTS_OK ya TTS_SKIP ka reason dikhega (key/limit/narration missing).
+- **Render bahut dheema**: Kaggle secrets check karo; ya config.json me cycles_samples kam karo.
+- **Gemini 404**: config.json me `gemini_model` apne key ke hisaab se badlo.
+- **60-din inactive repo wala schedule issue**: pipeline khud commit karti hai, isliye repo active rehta hai.
 
-Settings -> General -> sabse neeche Danger Zone -> **Change visibility -> Public**.
-Public repo me Actions ke standard runners free aur unlimited hain. Secrets encrypted
-rehte hain, code dikhna koi problem nahi. (Private me sirf 2000 min/month milte hain.)
+## Aage badhne ke ideas
 
-Daily schedule pehle se laga hai: **roz 21:00 IST**. Har run apna result repo me commit
-karta hai - isse repo "active" rehta hai aur GitHub ka 60-din auto-disable rule lagta hi nahi.
-
----
-
-## Roz ka use
-
-- **Prompts ki queue**: `prompts/prompts.txt` me ek line = ek video. Roz upar se ek line
-  use hoti hai aur `prompts/used.txt` me chali jaati hai. Kabhi bhi nayi lines add kar do.
-  File khali ho to `config.json` ka `default_prompt` use hota hai.
-- **Manual run**: Actions -> Generate Video -> Run workflow -> prompt bhi de sakte ho.
-- **Schedule badalna**: `.github/workflows/generate-video.yml` me `cron:` line badlo (UTC time).
-
-## Config (`config/config.json`)
-
-| Key | Matlab |
-|---|---|
-| `resolution` | `[720, 1280]` test ke liye; final `[1080, 1920]` (render slow hoga) |
-| `cycles_samples` | Quality - kam = fast (12-48) |
-| `gemini_model` | Agar 404 aaye to apne key ka model name dalo |
-| `youtube_privacy` | `private` / `unlisted` / `public` |
-| `character_face_offset_deg` | Character ulta side dekh raha ho to 90 / -90 karo |
-| `use_fallback_scene` | Gemini fail ho to test scene se render (true = pipeline kabhi nahi rukti) |
-
-## Locations (`config/locations.json`)
-
-Named spots jahan character ja sakta hai: `house_1`, `road_center`, `tree_1`, etc.
-Yahan coordinates badlo to character wahan jayega. Naya naam add karoge to Gemini use
-karne lagega (system prompt automatically uthata hai).
-
-## Assets
-
-`assets/README.md` padho - character, animations (walk/run/wave...), houses, map kaise
-daalna hai. **File ka naam hi animation ka naam hai** (`run.glb` = "run").
-
-## Trouble ho to
-
-- **Gemini 404**: `gemini_model` galat hai - config me sahi name dalo.
-- **Video me sirf dummy scene**: normal hai jab tak assets nahi dale.
-- **Upload 401/403**: refresh token expire/invalid - Step 2 dobara karo.
-- **Render bahut slow**: `cycles_samples` ghatao ya `resolution` 540x960 karo.
-- **Actions tab me schedule nahi dikh raha**: repo 60 din se inactive thi - koi bhi commit
-  push karo, phir Enable workflow.
-
-## Aage (Kaggle GPU)
-
-GitHub runner pe GPU nahi hota (CPU render). 1080p ya heavy scenes ke liye Kaggle ka
-free GPU (30 ghante/week) jodna planned hai - architecture ready hai, `KAGGLE_USERNAME` /
-`KAGGLE_KEY` secrets already rakh sakte ho.
+- Aur characters/environments: `scripts/fetch_assets.sh` me nayi Kenney/Quaternius files ke URLs add karo (sab CC0).
+- Character badalna: `assets/character/character.glb` replace karo (koi bhi .glb jisme animations ho).
+- TTS voice: config.json me `tts_voice` badlo (Kore, Puck, Charon, Fenrir, Leda...).

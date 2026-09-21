@@ -34,7 +34,10 @@ def main():
     src = sorted(glob.glob("3d-ai-shorts-*/"))[0]
     print("REPO_DIR:", src, flush=True)
 
-    # 2) Blender download
+    # 2) CC0 assets (Kenney character/houses/trees) - ek baar download
+    run(["bash", os.path.join(src, "scripts", "fetch_assets.sh")], cwd=src)
+
+    # 3) Blender download
     blender = os.path.join(WORK, "blender_bin", "blender")
     if not os.path.exists(blender):
         listing = subprocess.check_output(
@@ -46,11 +49,11 @@ def main():
         shutil.move(folder, "blender_bin")
     run([blender, "--version"])
 
-    # 3) scene.json likho (Actions ne inject kiya)
+    # 4) scene.json likho (Actions ne inject kiya)
     with open("scene.json", "w") as f:
         f.write(SCENE_JSON)
 
-    # 4) render (GPU T4/P100 pe Cycles khud chunta hai - render.py me AUTO mode hai)
+    # 5) render (render.py me AUTO GPU mode hai: OptiX -> CUDA -> CPU)
     cmd = [blender, "-b", "-P", os.path.join(src, "blender", "automation.py"), "--",
            "--scene", os.path.join(WORK, "scene.json"),
            "--config", os.path.join(src, "config", "config.json"),
@@ -63,13 +66,13 @@ def main():
         print("ERROR: blender render fail hua (exit %d)" % r.returncode)
         sys.exit(1)
 
-    # 5) verify
+    # 6) verify
     if not os.path.exists(os.path.join(WORK, "video.mp4")):
         print("ERROR: video.mp4 nahi bana")
         sys.exit(1)
     print("KAGGLE_RENDER_OK", flush=True)
 
-    # 6) cleanup - kernel output me sirf video + scene hona chahiye
+    # 7) cleanup - kernel output me sirf video + scene hona chahiye
     #    (warna 300MB+ blender bhi download hota output me)
     for junk in ("repo.zip",):
         if os.path.exists(junk):

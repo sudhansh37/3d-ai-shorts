@@ -3,31 +3,39 @@ import math
 
 import bpy
 
-# camera offsets: (x, y, z) target se relative
+# camera offsets: (x, y, z) target se relative (y negative = camera south me,
+# character north dekhega - houses background me dikhenge)
 PRESETS = {
-    "wide":          (5.0, -9.0, 4.5),
-    "medium":        (3.0, -4.5, 2.0),
-    "closeup":       (1.0, -1.7, 1.6),
-    "follow":        (2.2, -3.4, 1.7),
-    "front":         (0.0, -4.2, 1.5),
-    "back":          (0.0,  4.2, 1.6),
-    "side_tracking": (3.4, -0.4, 1.5),
-    "low_angle":     (1.6, -2.8, 0.35),
-    "high_angle":    (3.0, -4.0, 6.5),
-    "overhead":      (0.1, -0.3, 12.0),
+    "wide":          (6.0, -11.0, 5.0),
+    "medium":        (3.4, -5.6, 2.4),
+    "closeup":       (1.6, -3.0, 1.6),
+    "follow":        (2.8, -5.6, 2.3),
+    "front":         (0.0, -4.6, 1.6),
+    "back":          (0.0,  4.6, 1.8),
+    "side_tracking": (3.8, -0.6, 1.6),
+    "low_angle":     (1.8, -3.2, 0.4),
+    "high_angle":    (3.2, -4.6, 7.0),
+    "overhead":      (0.1, -0.4, 13.0),
 }
 
 
 def setup_camera(scene, shots, target_obj):
-    """Ek camera banao, TRACK_TO target pe, har shot ke liye preset offset keyframes."""
+    """Ek camera banao, TRACK_TO target (character ka center ~1m height) pe,
+    har shot ke liye preset offset keyframes."""
     cam_data = bpy.data.cameras.new("shorts_cam")
-    cam_data.lens = 32
+    cam_data.lens = 30
     cam = bpy.data.objects.new("shorts_cam", cam_data)
     bpy.context.collection.objects.link(cam)
     scene.camera = cam
 
+    # track point: character ke dhad (torso) par - taaki sar na kate
+    track_target = bpy.data.objects.new("hero_track", None)
+    scene.collection.objects.link(track_target)
+    track_target.parent = target_obj
+    track_target.location = (0.0, 0.0, 1.0)
+
     con = cam.constraints.new(type="TRACK_TO")
-    con.target = target_obj
+    con.target = track_target
     con.track_axis = "TRACK_NEGATIVE_Z"
     con.up_axis = "UP_Y"
 

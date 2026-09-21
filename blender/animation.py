@@ -8,8 +8,8 @@ SUPPORTED = (".glb", ".gltf", ".fbx")
 
 
 def collect_animation_library(assets_dir):
-    """assets/animations/<name>.glb -> library['<name>'] = action.
-    Character ke apne embedded actions bhi name se add hote hain."""
+    """assets/animations/<name>.glb files + character ke embedded actions.
+    Return: {name_lower: action}"""
     library = {}
     anim_dir = os.path.join(assets_dir, "animations")
     if os.path.isdir(anim_dir):
@@ -18,7 +18,7 @@ def collect_animation_library(assets_dir):
                 continue
             stem = os.path.splitext(fn)[0].strip().lower()
             path = os.path.join(anim_dir, fn)
-            before_actions = set(bpy.data.actions)
+            before_actions = set(a.name for a in bpy.data.actions)
             before_objs = set(bpy.context.scene.objects)
             try:
                 if fn.lower().endswith((".glb", ".gltf")):
@@ -28,9 +28,8 @@ def collect_animation_library(assets_dir):
             except Exception as e:
                 print("WARN: animation import fail %s: %s" % (fn, e))
                 continue
-            new_actions = [a for a in bpy.data.actions if a not in before_actions]
+            new_actions = [a for a in bpy.data.actions if a.name not in before_actions]
             new_objs = [o for o in bpy.context.scene.objects if o not in before_objs]
-            # imported dummy objects hata do (actions reh jaate hain)
             for o in new_objs:
                 try:
                     bpy.data.objects.remove(o, do_unlink=True)
@@ -38,39 +37,65 @@ def collect_animation_library(assets_dir):
                     pass
             if new_actions:
                 library[stem] = new_actions[0]
-                print("Animation loaded: %s (%s)" % (stem, new_actions[0].name))
-            else:
-                print("WARN: %s me koi action nahi mila" % fn)
+                print("Animation loaded: %s" % stem)
 
-    # character ke embedded actions (import ke baad bpy.data.actions me hote hain)
+    # character ke embedded actions (Kenney style - ek hi .glb me saare)
     for act in bpy.data.actions:
         key = act.name.strip().lower()
         if key and key not in library:
             library[key] = act
+    print("Animation library: %d actions" % len(library))
     return library
 
 
-def find_action(library, name):
+def find_action(library, name, aliases=None):
     name = (name or "").strip().lower()
+    if aliases:
+        mapped = aliases.get(name)
+        if mapped:
+            name = mapped.strip().lower()
     if name in library:
         return library[name]
-    # partial match
     for key, act in library.items():
         if name and name in key:
             return act
     return None
 
 
-def add_action_strips(armature, action, start_frame, end_frame):
-    """Armature ke NLA me action ko loop karke fit karo."""
-    ad = armature.animation_data_create()
+def add_action_strips(action, start_frame, end_frame):
+    """Action ko uske slot-objects pe NLA strips se loop karke fit karo.
+    (Kenney style: ek action multiple objects ko animate karta hai - Blender 4.4+
+    strip banate waqt khud sahi slot chun leta hai.)"""
+    slot_names = set()
+    try:
+        for s in action.slots:
+            slot_names.add(s.name_display)
+    except Exception:
+        pass
+    targets = [o for o in bpy.context.scene.objects if o.name in slot_names]
+    if not targets:
+        targets = [o for o in bpy.context.scene.objects if o.animation_data]
+    if not targets:
+        return 0
     alen = max(1.0, float(action.frame_range[1] - action.frame_range[0]))
-    cur = int(start_frame)
-    track = ad.nla_tracks.new()
-    track.name = action.name
-    while cur < end_frame:
-        strip = track.strips.new(name="%s.%d" % (action.name, cur), start=cur, action=action)
-        cur += int(alen)
+    for obj in targets:
+        ad = obj.animation_data_create()
+        if ad.action == action:
+            ad.action = None
+        track = ad.nla_tracks.new()
+        track.name = action.name
+        cur = int(start_frame)
+        n = 0
+        while cur < end_frame:
+            try:
+                track.strips.new(name="%s.%d" % (action.name, n),
+                                 start=cur, action=action)
+            except Exception as e:
+                print("WARN: strip fail on %s: %s" % (obj.name, e))
+                break
+            cur += int(alen)
+            n += 1
+    return len(targets)
 
 
 def fake_bounce_animation(root, start_frame, end_frame, base_z=0.0):
@@ -85,11 +110,12 @@ def fake_bounce_animation(root, start_frame, end_frame, base_z=0.0):
     root.keyframe_insert("location", index=2, frame=int(end_frame))
 
 
-def apply_action(character_root, action, start_frame, end_frame, is_proxy):
-    if action is not None and character_root.type == "ARMATURE":
+def apply_action(character_root, action, start_frame, end_frame):
+    if action is not None:
         try:
-            add_action_strips(character_root, action, int(start_frame), int(end_frame))
-            return "nla:%s" % action.name
+            n = add_action_strips(action, int(start_frame), int(end_frame))
+            if n > 0:
+                return "nla:%s" % action.name
         except Exception as e:
             print("WARN: NLA fail (%s) - bounce use hoga: %s" % (action.name, e))
     fake_bounce_animation(character_root, start_frame, end_frame)

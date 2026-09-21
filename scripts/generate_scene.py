@@ -3,7 +3,8 @@
 Gemini se natural-language prompt ka structured scene JSON banata hai.
 - prompts/prompts.txt se roz agli line uthata hai (ya --prompt se custom)
 - Gemini ko allowed locations/animations/cameras ki list dekar JSON banwata hai
-- Fail hone par fallback scene use karta hai (config me on hai) taki render test ho sake
+- narration field: Hindi (Devanagari) storytelling lines - Gemini TTS bolti hai
+- Fail hone par fallback scene use karta hai (config me on hai)
 Usage:
   python scripts/generate_scene.py [--prompt "..."] [--out generated/scene.json] [--no-consume]
 """
@@ -26,6 +27,7 @@ SCHEMA_HINT = (
     '{"title": "short title (max 70 chars)", '
     '"description": "1-2 line description with 3 hashtags", '
     '"tags": ["tag1", "tag2", "tag3"], '
+    '"narration": "Hindi narration in Devanagari script - 2-4 short dramatic lines telling the story", '
     '"scene": {"duration": 15, "characters": [{"id": "hero", "actions": ['
     '{"animation": "walk", "from": "house_1", "to": "road_center", "duration": 4}, '
     '{"animation": "wave", "location": "road_center", "duration": 3}]}]}, '
@@ -36,6 +38,7 @@ FALLBACK_SCENE = {
     "title": "Hero Ka Chhota Adventure",
     "description": "3D animated short - hero ghar se nikal kar road par daudta hai aur haath hilata hai! #shorts #3d #animation",
     "tags": ["shorts", "3danimation", "blender"],
+    "narration": "हीरो अपने घर से बाहर निकलता है। फिर वह सड़क पर तेज़ी से दौड़ता है। और आखिर में, अपने दोस्त को खुशी से हाथ हिलाता है!",
     "scene": {
         "duration": 11,
         "characters": [
@@ -63,7 +66,16 @@ def load_json(path):
 
 
 def list_animations():
-    """assets/animations/ ke file names ko animation names ki tarah use karo."""
+    """Pehle assets/manifest.json (Kenney embedded animations), phir
+    assets/animations/ files, warna default list."""
+    manifest = os.path.join(REPO_ROOT, "assets", "manifest.json")
+    if os.path.isfile(manifest):
+        try:
+            names = load_json(manifest).get("animations") or []
+            if names:
+                return names
+        except Exception:
+            pass
     d = os.path.join(REPO_ROOT, "assets", "animations")
     names = []
     if os.path.isdir(d):
@@ -72,7 +84,6 @@ def list_animations():
             if stem and stem not in names:
                 names.append(stem)
     if not names:
-        # assets nahi hain to common Mixamo names allow karo (Blender me fallback chalega)
         names = ["idle", "walk", "run", "jump", "sit", "stand", "wave", "talk", "fall", "attack"]
     return names
 
@@ -91,6 +102,9 @@ def build_system_prompt(locations, animations):
         "6. Total action durations between 10 and 20 seconds.\n"
         "7. Camera durations must sum to the scene duration. 2-4 camera shots.\n"
         "8. Title and description in simple Hinglish/Hindi romanized style.\n"
+        "9. 'narration' MUST be in Hindi using Devanagari script, 2-4 short dramatic "
+        "storytelling lines (like a narrator voicing a kids story). It must narrate "
+        "exactly the events of the actions. Speaking time should be 8-16 seconds.\n"
     )
 
 

@@ -45,6 +45,9 @@ jobs:
       - name: Install Python deps
         run: pip install -r requirements.txt kaggle
 
+      - name: CC0 assets download (character/houses/trees - Kenney)
+        run: bash scripts/fetch_assets.sh
+
       - name: Download Blender (latest 4.5.x) - CPU fallback ke liye
         run: |
           mkdir -p blender_bin
@@ -106,6 +109,20 @@ jobs:
             --assets assets \
             --out output
           ls -la output/
+
+      - name: Narration banao (Gemini TTS) aur video me jodo
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python scripts/generate_tts.py --json generated/scene.json --out output/narration.wav
+          if [ -f output/narration.wav ]; then
+            ffmpeg -y -i output/video.mp4 -i output/narration.wav \
+              -c:v copy -c:a aac -b:a 160k -shortest output/final.mp4
+            mv output/final.mp4 output/video.mp4
+            echo "TTS_MUX_OK - video me narration jud gayi"
+          else
+            echo "TTS skip - video silent chalegi"
+          fi
 
       - name: Upload to YouTube
         if: ${{ github.event.inputs.skip_upload != 'true' }}
