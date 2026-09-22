@@ -1,12 +1,12 @@
 {
-  "title": "Hero ki subah ki sair aur daud",
-  "description": "Hero ped ke neeche se uth kar road par daudta hai aur dost ko haath hilata hai. #story #animation #shorts",
+  "title": "Road Par Akela Hero",
+  "description": "Hero road ke beech me khada hokar idhar udhar dekhta hai aur ghar bhaagta hai. #HindiStory #Shorts #Animation",
   "tags": [
     "story",
     "animation",
-    "shorts"
+    "hindi"
   ],
-  "narration": "हीरो पेड़ के नीचे आराम से बैठा था। तभी वह अचानक उठा और सड़क पर तेजी से दौड़ने लगा। दूसरे घर के पास पहुँचकर उसने प्यार से हाथ हिलाया।",
+  "narration": "वीर सड़क के बीचोबीच खड़ा होकर चारों तरफ देखने लगा। अचानक उसे कुछ डर महसूस हुआ और वह तेजी से अपने घर की तरफ भागने लगा।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -14,22 +14,16 @@
         "id": "hero",
         "actions": [
           {
-            "animation": "sit",
-            "from": "tree_1",
-            "to": "tree_1",
-            "duration": 4
+            "animation": "idle",
+            "from": "road_center",
+            "to": "road_center",
+            "duration": 5
           },
           {
             "animation": "run",
-            "from": "tree_1",
-            "to": "road_center",
-            "duration": 7
-          },
-          {
-            "animation": "wave",
             "from": "road_center",
-            "to": "house_2",
-            "duration": 4
+            "to": "house_1",
+            "duration": 10
           }
         ]
       }
@@ -39,17 +33,12 @@
     {
       "type": "wide",
       "target": "hero",
-      "duration": 4
+      "duration": 5
     },
     {
       "type": "follow",
       "target": "hero",
-      "duration": 7
-    },
-    {
-      "type": "closeup",
-      "target": "hero",
-      "duration": 4
+      "duration": 10
     }
   ]
 }
