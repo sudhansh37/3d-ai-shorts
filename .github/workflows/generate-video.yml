@@ -45,6 +45,9 @@ jobs:
       - name: Install Python deps
         run: pip install -r requirements.txt kaggle
 
+      - name: Install ffmpeg (audio merge ke liye)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
       - name: CC0 assets download (character/houses/trees - Kenney)
         run: bash scripts/fetch_assets.sh
 
