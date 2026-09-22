@@ -2,3 +2,4 @@ Hero ghar se bahar nikalta hai, road par daudta hai aur doosre ghar ke saamne kh
 Hero road par chalta hai, ped ke paas jaakar rukta hai, idhar-udhar dekhta hai aur phir wapas ghar ki taraf daudta hai.
 Hero ghar ke bahar khada hokar baat karta hai, phir khushi se jump karta hai aur ghar ke andar chala jaata hai.
 Hero road par daudta hai, ped ke paas ruk kar attack karta hai aur phir aage badhta hai.
+Hero ghar se bahar aakar baith jaata hai, thodi der baad uthkar road par chalne lagta hai.

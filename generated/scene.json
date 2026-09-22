@@ -1,11 +1,12 @@
 {
-  "title": "Hero ka Action Move on Road",
-  "description": "Dekho hero kaise road par daudkar attack karta hai! #Action #Hero #Shorts",
+  "title": "Ghar Se Road Tak Ka Safar",
+  "description": "Hero apne ghar se nikal kar road par chalne laga ek suhana safar. #Shorts #Story #Walking",
   "tags": [
-    "action",
-    "hero",
-    "shorts"
+    "shorts",
+    "story",
+    "walking"
   ],
+  "narration": "हिरो अपने घर के दरवाजे से बाहर आया। थोड़ी देर उसने आराम किया और फिर सड़क पर चल पड़ा।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -13,26 +14,21 @@
         "id": "hero",
         "actions": [
           {
-            "animation": "run",
-            "from": "road_start",
+            "animation": "walk",
+            "from": "house_1",
             "to": "road_center",
             "duration": 5
           },
           {
-            "animation": "stand",
+            "animation": "sit",
             "location": "road_center",
-            "duration": 2
-          },
-          {
-            "animation": "attack",
-            "location": "road_center",
-            "duration": 3
+            "duration": 4
           },
           {
             "animation": "walk",
             "from": "road_center",
             "to": "road_end",
-            "duration": 5
+            "duration": 6
           }
         ]
       }
@@ -40,19 +36,19 @@
   },
   "camera": [
     {
-      "type": "follow",
+      "type": "wide",
       "target": "hero",
       "duration": 5
     },
     {
       "type": "closeup",
       "target": "hero",
-      "duration": 5
+      "duration": 4
     },
     {
-      "type": "wide",
+      "type": "follow",
       "target": "hero",
-      "duration": 5
+      "duration": 6
     }
   ]
 }
