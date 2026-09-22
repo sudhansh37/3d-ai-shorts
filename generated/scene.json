@@ -1,12 +1,12 @@
 {
-  "title": "Ghar Se Road Tak Ka Safar",
-  "description": "Hero apne ghar se nikal kar road par chalne laga ek suhana safar. #Shorts #Story #Walking",
+  "title": "Hero ki subah ki sair aur daud",
+  "description": "Hero ped ke neeche se uth kar road par daudta hai aur dost ko haath hilata hai. #story #animation #shorts",
   "tags": [
-    "shorts",
     "story",
-    "walking"
+    "animation",
+    "shorts"
   ],
-  "narration": "हिरो अपने घर के दरवाजे से बाहर आया। थोड़ी देर उसने आराम किया और फिर सड़क पर चल पड़ा।",
+  "narration": "हीरो पेड़ के नीचे आराम से बैठा था। तभी वह अचानक उठा और सड़क पर तेजी से दौड़ने लगा। दूसरे घर के पास पहुँचकर उसने प्यार से हाथ हिलाया।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -14,21 +14,22 @@
         "id": "hero",
         "actions": [
           {
-            "animation": "walk",
-            "from": "house_1",
-            "to": "road_center",
-            "duration": 5
-          },
-          {
             "animation": "sit",
-            "location": "road_center",
+            "from": "tree_1",
+            "to": "tree_1",
             "duration": 4
           },
           {
-            "animation": "walk",
+            "animation": "run",
+            "from": "tree_1",
+            "to": "road_center",
+            "duration": 7
+          },
+          {
+            "animation": "wave",
             "from": "road_center",
-            "to": "road_end",
-            "duration": 6
+            "to": "house_2",
+            "duration": 4
           }
         ]
       }
@@ -38,17 +39,17 @@
     {
       "type": "wide",
       "target": "hero",
-      "duration": 5
-    },
-    {
-      "type": "closeup",
-      "target": "hero",
       "duration": 4
     },
     {
       "type": "follow",
       "target": "hero",
-      "duration": 6
+      "duration": 7
+    },
+    {
+      "type": "closeup",
+      "target": "hero",
+      "duration": 4
     }
   ]
 }
