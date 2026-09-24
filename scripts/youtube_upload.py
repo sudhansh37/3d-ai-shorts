@@ -2,7 +2,8 @@
 """
 Rendered MP4 ko YouTube Data API v3 se upload karta hai.
 Secrets env se aate hain: GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, YT_REFRESH_TOKEN.
-Koi secret missing ho to 'SKIP' print karke exit 0 (pipeline rukti nahi).
+- AI-generated content ka disclosure (containsSyntheticMedia) automatically ON rehta hai
+- Koi secret missing ho to 'SKIP' print karke exit 0 (pipeline rukti nahi).
 Usage:
   python scripts/youtube_upload.py --video output/video.mp4 --json generated/scene.json
 """
@@ -31,6 +32,8 @@ def upload_video(youtube, video_path, title, description, tags, privacy, categor
         "status": {
             "privacyStatus": privacy,
             "selfDeclaredMadeForKids": False,
+            # AI-generated content disclosure (YouTube settings me "Altered content" = Yes)
+            "containsSyntheticMedia": True,
         },
     }
     media = MediaFileUpload(video_path, chunksize=8 * 1024 * 1024,
@@ -89,7 +92,7 @@ def main():
             print("Upload try %d/3..." % attempt)
             response = upload_video(youtube, args.video, title, description, tags, privacy, category_id)
             print("UPLOAD_OK: https://www.youtube.com/watch?v=%s" % response["id"])
-            print("Title: %s | Privacy: %s" % (title, privacy))
+            print("Title: %s | Privacy: %s | AI disclosure: ON" % (title, privacy))
             return 0
         except HttpError as e:
             last_err = e

@@ -12,7 +12,8 @@
   "gemini_model": "gemini-flash-lite-latest",
   "use_fallback_scene": true,
   "character_face_offset_deg": 0,
-  "youtube_privacy": "private",
+  "youtube_privacy": "public",
   "youtube_category_id": "1",
+  "watermark": "zynr2",
   "default_prompt": "Hero ghar se bahar nikalta hai, road par daudta hai aur doosre ghar ke saamne khada hokar haath hilata hai. Camera cinematic ho."
 }
