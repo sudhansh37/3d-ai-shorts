@@ -5,3 +5,4 @@ Hero road par daudta hai, ped ke paas ruk kar attack karta hai aur phir aage bad
 Hero ghar se bahar aakar baith jaata hai, thodi der baad uthkar road par chalne lagta hai.
 Hero ped ke neeche baithta hai, phir uth kar road par daudta hai aur doosre ghar ke paas haath hilata hai.
 Hero road ke beech me khada rehta hai, idhar-udhar ghoorta hai, phir ghar ki taraf bhaagta hai.
+Hero ghar ke aage khada hokar bolta hai, phir jump karta hai aur daudte hue door jaata hai.

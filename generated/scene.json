@@ -1,12 +1,12 @@
 {
-  "title": "Road Par Akela Hero",
-  "description": "Hero road ke beech me khada hokar idhar udhar dekhta hai aur ghar bhaagta hai. #HindiStory #Shorts #Animation",
+  "title": "Hero ka Jaldbaazi Wala Safar",
+  "description": "Hero ghar se nikal kar daud pada. #shorts #story #hero",
   "tags": [
+    "hero",
     "story",
-    "animation",
-    "hindi"
+    "animation"
   ],
-  "narration": "वीर सड़क के बीचोबीच खड़ा होकर चारों तरफ देखने लगा। अचानक उसे कुछ डर महसूस हुआ और वह तेजी से अपने घर की तरफ भागने लगा।",
+  "narration": "अचानक हीरो अपने घर के बाहर आया और उसने जोर से बात की। फिर उसने खुशी से एक लंबी छलांग लगाई और तेज़ी से सड़क की तरफ दौड़ पड़ा।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -14,16 +14,20 @@
         "id": "hero",
         "actions": [
           {
-            "animation": "idle",
-            "from": "road_center",
-            "to": "road_center",
-            "duration": 5
+            "animation": "talk",
+            "location": "house_1",
+            "duration": 4
+          },
+          {
+            "animation": "jump",
+            "location": "house_1",
+            "duration": 3
           },
           {
             "animation": "run",
-            "from": "road_center",
-            "to": "house_1",
-            "duration": 10
+            "from": "house_1",
+            "to": "road_end",
+            "duration": 8
           }
         ]
       }
@@ -31,14 +35,19 @@
   },
   "camera": [
     {
-      "type": "wide",
+      "type": "closeup",
       "target": "hero",
-      "duration": 5
+      "duration": 4
+    },
+    {
+      "type": "low_angle",
+      "target": "hero",
+      "duration": 3
     },
     {
       "type": "follow",
       "target": "hero",
-      "duration": 10
+      "duration": 8
     }
   ]
 }
