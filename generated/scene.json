@@ -1,12 +1,12 @@
 {
-  "title": "Hero ka Jaldbaazi Wala Safar",
-  "description": "Hero ghar se nikal kar daud pada. #shorts #story #hero",
+  "title": "Hero Ka Safar",
+  "description": "Dekhiye hero ka yeh mazedaar safar. #shorts #story #animation",
   "tags": [
-    "hero",
+    "shorts",
     "story",
     "animation"
   ],
-  "narration": "अचानक हीरो अपने घर के बाहर आया और उसने जोर से बात की। फिर उसने खुशी से एक लंबी छलांग लगाई और तेज़ी से सड़क की तरफ दौड़ पड़ा।",
+  "narration": "अरे देखो, हीरो अपने घर से चलकर रास्ते के पास पेड़ तक गया। फिर वह वापस सड़क के बीच आकर खुशी से हाथ हिलाने लगा।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -14,20 +14,21 @@
         "id": "hero",
         "actions": [
           {
-            "animation": "talk",
-            "location": "house_1",
+            "animation": "walk",
+            "from": "house_1",
+            "to": "tree_1",
+            "duration": 8
+          },
+          {
+            "animation": "walk",
+            "from": "tree_1",
+            "to": "road_center",
             "duration": 4
           },
           {
-            "animation": "jump",
-            "location": "house_1",
+            "animation": "wave",
+            "location": "road_center",
             "duration": 3
-          },
-          {
-            "animation": "run",
-            "from": "house_1",
-            "to": "road_end",
-            "duration": 8
           }
         ]
       }
@@ -35,19 +36,14 @@
   },
   "camera": [
     {
-      "type": "closeup",
-      "target": "hero",
-      "duration": 4
-    },
-    {
-      "type": "low_angle",
-      "target": "hero",
-      "duration": 3
-    },
-    {
       "type": "follow",
       "target": "hero",
       "duration": 8
+    },
+    {
+      "type": "closeup",
+      "target": "hero",
+      "duration": 7
     }
   ]
 }
