@@ -1,12 +1,12 @@
 {
-  "title": "Hero Ka Safar",
-  "description": "Dekhiye hero ka yeh mazedaar safar. #shorts #story #animation",
+  "title": "Hero ka achanak daudna aur rukna",
+  "description": "Hero house 2 se daudta hua road ke beech aaya aur upar dekhne laga. #Hero #Story #Shorts",
   "tags": [
-    "shorts",
-    "story",
-    "animation"
+    "hero",
+    "running",
+    "drama"
   ],
-  "narration": "अरे देखो, हीरो अपने घर से चलकर रास्ते के पास पेड़ तक गया। फिर वह वापस सड़क के बीच आकर खुशी से हाथ हिलाने लगा।",
+  "narration": "अचानक हीरो दूसरे घर के पास से तेज़ी से दौड़ा। वह भागता हुआ सड़क के बीचों-बीच आया और रुक कर ऊपर आसमान की तरफ देखने लगा।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -14,21 +14,15 @@
         "id": "hero",
         "actions": [
           {
-            "animation": "walk",
-            "from": "house_1",
-            "to": "tree_1",
+            "animation": "run",
+            "from": "house_2",
+            "to": "road_center",
             "duration": 8
           },
           {
-            "animation": "walk",
-            "from": "tree_1",
-            "to": "road_center",
-            "duration": 4
-          },
-          {
-            "animation": "wave",
+            "animation": "idle",
             "location": "road_center",
-            "duration": 3
+            "duration": 7
           }
         ]
       }
@@ -41,7 +35,7 @@
       "duration": 8
     },
     {
-      "type": "closeup",
+      "type": "low_angle",
       "target": "hero",
       "duration": 7
     }
