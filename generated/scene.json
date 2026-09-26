@@ -1,12 +1,12 @@
 {
-  "title": "Hero ka achanak daudna aur rukna",
-  "description": "Hero house 2 se daudta hua road ke beech aaya aur upar dekhne laga. #Hero #Story #Shorts",
+  "title": "Hero Ka Safar - Ghar Se Car Tak",
+  "description": "Hero apne ghar se nikal kar ped aur car ke paas jaata hai. #shorts #story #animation",
   "tags": [
-    "hero",
-    "running",
-    "drama"
+    "shorts",
+    "story",
+    "animation"
   ],
-  "narration": "अचानक हीरो दूसरे घर के पास से तेज़ी से दौड़ा। वह भागता हुआ सड़क के बीचों-बीच आया और रुक कर ऊपर आसमान की तरफ देखने लगा।",
+  "narration": "हीरो अपने घर से बाहर निकलता है। वह चलते हुए पेड़ के पास पहुँचता है। फिर वह कार के पास जाकर सब कुछ ध्यान से देखता है और वापस मुड़ जाता है।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -14,15 +14,21 @@
         "id": "hero",
         "actions": [
           {
-            "animation": "run",
-            "from": "house_2",
-            "to": "road_center",
-            "duration": 8
+            "animation": "walk",
+            "from": "house_1",
+            "to": "tree_1",
+            "duration": 5
           },
           {
-            "animation": "idle",
-            "location": "road_center",
-            "duration": 7
+            "animation": "walk",
+            "from": "tree_1",
+            "to": "car_1",
+            "duration": 5
+          },
+          {
+            "animation": "wave",
+            "location": "car_1",
+            "duration": 5
           }
         ]
       }
@@ -32,12 +38,17 @@
     {
       "type": "follow",
       "target": "hero",
-      "duration": 8
+      "duration": 5
     },
     {
-      "type": "low_angle",
+      "type": "side_tracking",
       "target": "hero",
-      "duration": 7
+      "duration": 5
+    },
+    {
+      "type": "closeup",
+      "target": "hero",
+      "duration": 5
     }
   ]
 }
