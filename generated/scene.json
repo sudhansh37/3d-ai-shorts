@@ -1,12 +1,13 @@
 {
-  "title": "Hero ki daud aur uski kahani",
-  "description": "Ek chhota safar, hero ki daud aur uska doston se milna. #shorts #story #hero",
+  "title": "Ghar Se Nikal Kar Daudta Hua Hero",
+  "description": "Ek chhota sa bachha apne ghar se nikal kar road par daudta hai aur doosre ghar ke paas jakar haath hilata hai. #shorts #story #animation",
   "tags": [
     "shorts",
     "story",
-    "hero"
+    "animation",
+    "hindi"
   ],
-  "narration": "हीरो सड़क पर तेज़ी से दौड़ने लगा। वह अपने घर के पास आकर रुका और उसने सबको हाथ हिलाकर अलविदा कहा।",
+  "narration": "hero apne ghar se bahar nikalta hai. wo tezi se road par daudne lagta hai. aur phir doosre ghar ke saamne ruk kar sabko haath hilata hai.",
   "scene": {
     "duration": 15,
     "characters": [
@@ -14,20 +15,20 @@
         "id": "hero",
         "actions": [
           {
-            "animation": "run",
-            "from": "road_start",
-            "to": "road_center",
-            "duration": 6
-          },
-          {
             "animation": "walk",
-            "from": "road_center",
-            "to": "house_1",
+            "from": "house_1",
+            "to": "road_start",
             "duration": 4
           },
           {
+            "animation": "run",
+            "from": "road_start",
+            "to": "house_2",
+            "duration": 6
+          },
+          {
             "animation": "wave",
-            "location": "house_1",
+            "location": "house_2",
             "duration": 5
           }
         ]
@@ -36,19 +37,19 @@
   },
   "camera": [
     {
+      "type": "wide",
+      "target": "hero",
+      "duration": 5
+    },
+    {
       "type": "follow",
       "target": "hero",
       "duration": 6
     },
     {
-      "type": "side_tracking",
-      "target": "hero",
-      "duration": 4
-    },
-    {
       "type": "closeup",
       "target": "hero",
-      "duration": 5
+      "duration": 4
     }
   ]
 }

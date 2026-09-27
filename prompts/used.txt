@@ -10,3 +10,4 @@ Hero road par chal-chal kar ped tak jaata hai aur wapas aakar haath hilata hai.
 Hero doosre ghar ke paas se daudta aata hai, road ke beech rukta hai aur upar dekhta hai.
 Hero ghar se nikalta hai, ped ke paas jaata hai, phir car ke paas jaakar dekhta hai aur wapas mudta hai.
 Hero road par daudta hai, ghar ke paas rukta hai, haath hilata hai aur andar chala jaata hai.
+Hero ghar se bahar nikalta hai, road par daudta hai aur doosre ghar ke saamne khada hokar haath hilata hai. Camera cinematic ho.
