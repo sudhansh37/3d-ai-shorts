@@ -1,12 +1,12 @@
 {
-  "title": "Ghar se road tak ka safar",
-  "description": "Hero ghar se nikal kar road par daudta hai aur dost ko bulata hai. #Shorts #Story #Adventure",
+  "title": "Ghar se sadak tak ka safar",
+  "description": "Ek chhota sa hero apne ghar se nikal kar daudta hai aur naye ghar ke paas pahunch kar haath hilata hai. #story #animation #shorts",
   "tags": [
     "story",
     "animation",
-    "adventure"
+    "shorts"
   ],
-  "narration": "वीर अपने घर से बाहर निकला। वह तेजी से सड़क पर दौड़ने लगा और दूसरे घर के सामने पहुँचकर हाथ हिलाने लगा।",
+  "narration": "hero apne ghar se nikal pada. vah tezi se sadak par daudne laga. ant mein, vah doosre ghar ke paas pahunch kar khada ho gaya aur sabko haath hilane laga.",
   "scene": {
     "duration": 15,
     "characters": [
@@ -17,18 +17,24 @@
             "animation": "walk",
             "from": "house_1",
             "to": "road_start",
-            "duration": 4
+            "duration": 3
           },
           {
             "animation": "run",
             "from": "road_start",
+            "to": "road_center",
+            "duration": 5
+          },
+          {
+            "animation": "run",
+            "from": "road_center",
             "to": "house_2",
-            "duration": 6
+            "duration": 4
           },
           {
             "animation": "wave",
             "location": "house_2",
-            "duration": 5
+            "duration": 3
           }
         ]
       }
@@ -41,14 +47,14 @@
       "duration": 4
     },
     {
-      "type": "side_tracking",
+      "type": "follow",
       "target": "hero",
-      "duration": 6
+      "duration": 7
     },
     {
       "type": "closeup",
       "target": "hero",
-      "duration": 5
+      "duration": 4
     }
   ]
 }
