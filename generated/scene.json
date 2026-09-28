@@ -1,13 +1,12 @@
 {
-  "title": "Ghar Se Nikal Kar Daudta Hua Hero",
-  "description": "Ek chhota sa bachha apne ghar se nikal kar road par daudta hai aur doosre ghar ke paas jakar haath hilata hai. #shorts #story #animation",
+  "title": "Ghar se road tak ka safar",
+  "description": "Hero ghar se nikal kar road par daudta hai aur dost ko bulata hai. #Shorts #Story #Adventure",
   "tags": [
-    "shorts",
     "story",
     "animation",
-    "hindi"
+    "adventure"
   ],
-  "narration": "hero apne ghar se bahar nikalta hai. wo tezi se road par daudne lagta hai. aur phir doosre ghar ke saamne ruk kar sabko haath hilata hai.",
+  "narration": "वीर अपने घर से बाहर निकला। वह तेजी से सड़क पर दौड़ने लगा और दूसरे घर के सामने पहुँचकर हाथ हिलाने लगा।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -39,17 +38,17 @@
     {
       "type": "wide",
       "target": "hero",
-      "duration": 5
+      "duration": 4
     },
     {
-      "type": "follow",
+      "type": "side_tracking",
       "target": "hero",
       "duration": 6
     },
     {
       "type": "closeup",
       "target": "hero",
-      "duration": 4
+      "duration": 5
     }
   ]
 }
