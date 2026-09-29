@@ -1,12 +1,12 @@
 {
-  "title": "Ghar se sadak tak ka safar",
-  "description": "Ek chhota sa hero apne ghar se nikal kar daudta hai aur naye ghar ke paas pahunch kar haath hilata hai. #story #animation #shorts",
+  "title": "Hero Ki Subah Ki Daud",
+  "description": "Dekhiye kaise hamara hero ghar se nikal kar road par daudta hai. #shorts #story #animation",
   "tags": [
+    "shorts",
     "story",
-    "animation",
-    "shorts"
+    "animation"
   ],
-  "narration": "hero apne ghar se nikal pada. vah tezi se sadak par daudne laga. ant mein, vah doosre ghar ke paas pahunch kar khada ho gaya aur sabko haath hilane laga.",
+  "narration": "hero apne ghar se bahar nikalta hai. vah tezi se road par daudne lagta hai. aakhirkar vah doosre ghar ke paas ruk kar haath hilata hai.",
   "scene": {
     "duration": 15,
     "characters": [
@@ -17,24 +17,18 @@
             "animation": "walk",
             "from": "house_1",
             "to": "road_start",
-            "duration": 3
+            "duration": 4
           },
           {
             "animation": "run",
             "from": "road_start",
             "to": "road_center",
-            "duration": 5
-          },
-          {
-            "animation": "run",
-            "from": "road_center",
-            "to": "house_2",
-            "duration": 4
+            "duration": 6
           },
           {
             "animation": "wave",
             "location": "house_2",
-            "duration": 3
+            "duration": 5
           }
         ]
       }
@@ -49,12 +43,12 @@
     {
       "type": "follow",
       "target": "hero",
-      "duration": 7
+      "duration": 6
     },
     {
       "type": "closeup",
       "target": "hero",
-      "duration": 4
+      "duration": 5
     }
   ]
 }
