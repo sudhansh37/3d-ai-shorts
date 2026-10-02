@@ -1,14 +1,14 @@
 {
-  "title": "Hero Ki Subah Ki Daud",
-  "description": "Hero ghar se nikal kar road par daudta hai aur dost ko hello bolta hai. #shorts #story #animation",
+  "title": "Ghar se road tak ka safar",
+  "description": "Hero nikla apne ghar se aur pahuncha doosre ghar ke paas. #Shorts #Story #Adventure",
   "tags": [
-    "shorts",
     "story",
-    "animation"
+    "animation",
+    "drama"
   ],
-  "narration": "हिरो अपने घर से बाहर निकलता है। वो तेज़ी से सड़क पर दौड़ता है। फिर दूसरे घर के सामने रुक कर हाथ हिलाता है।",
+  "narration": "hero apne ghar se bahar nikalta hai. woh tezi se road par daudne lagta hai. aakhirkar woh doosre ghar ke saamne ruk kar sabko haath hilata hai.",
   "scene": {
-    "duration": 15,
+    "duration": 14,
     "characters": [
       {
         "id": "hero",
@@ -16,18 +16,18 @@
           {
             "animation": "walk",
             "from": "house_1",
-            "to": "road_start",
+            "to": "road_center",
             "duration": 4
           },
           {
             "animation": "run",
-            "from": "road_start",
-            "to": "house_2",
-            "duration": 7
+            "from": "road_center",
+            "to": "road_end",
+            "duration": 6
           },
           {
             "animation": "wave",
-            "location": "house_2",
+            "location": "road_end",
             "duration": 4
           }
         ]
@@ -38,10 +38,10 @@
     {
       "type": "wide",
       "target": "hero",
-      "duration": 5
+      "duration": 4
     },
     {
-      "type": "follow",
+      "type": "side_tracking",
       "target": "hero",
       "duration": 6
     },
