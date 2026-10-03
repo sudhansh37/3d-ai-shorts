@@ -1,12 +1,12 @@
 {
-  "title": "Hero Ki Subah Ki Daud",
-  "description": "Dekhiye hero ka naya adventure! #Shorts #Hero #Adventure",
+  "title": "Hero Ka Safar - Ek Nayi Subah",
+  "description": "Hero apne ghar se nikal kar road par daudta hai aur nayi manzil ki taraf badhta hai. #Shorts #Story #Hero",
   "tags": [
+    "story",
     "hero",
-    "running",
-    "adventure"
+    "animation"
   ],
-  "narration": "अचानक हीरो अपने घर से बाहर निकला। वह तेजी से सड़क पर दौड़ने लगा। अंत में वह रुककर सबको हाथ हिलाने लगा।",
+  "narration": "हिरो अपने घर से बाहर निकलता है। वो तेज़ी से सड़क पर दौड़ता है और दूसरे घर के सामने जाकर हाथ हिलता है।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -16,20 +16,20 @@
           {
             "animation": "walk",
             "from": "house_1",
-            "to": "road_start",
+            "to": "road_center",
             "duration": 4
           },
           {
             "animation": "run",
-            "from": "road_start",
-            "to": "road_center",
-            "duration": 5
+            "from": "road_center",
+            "to": "road_end",
+            "duration": 6
           },
           {
             "animation": "wave",
-            "from": "road_center",
+            "from": "road_end",
             "to": "house_2",
-            "duration": 6
+            "duration": 5
           }
         ]
       }
@@ -37,14 +37,14 @@
   },
   "camera": [
     {
-      "type": "follow",
+      "type": "wide",
       "target": "hero",
-      "duration": 5
+      "duration": 4
     },
     {
-      "type": "side_tracking",
+      "type": "follow",
       "target": "hero",
-      "duration": 5
+      "duration": 6
     },
     {
       "type": "closeup",
