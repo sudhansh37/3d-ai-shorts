@@ -1,12 +1,12 @@
 {
   "title": "Hero Ki Subah Ki Daud",
-  "description": "Dekhiye kaise hamara hero ghar se nikal kar road par daudta hai aur apne dost ko hello kehta hai. #HeroLife #Shorts #DailyDrama",
+  "description": "Dekhiye hero ka naya adventure! #Shorts #Hero #Adventure",
   "tags": [
     "hero",
     "running",
-    "story"
+    "adventure"
   ],
-  "narration": "hero apne ghar se bahar nikalta hai. woh tezi se road par daudne lagta hai. aakhir mein woh doosre ghar ke paas ruk kar sabko haath hilata hai.",
+  "narration": "अचानक हीरो अपने घर से बाहर निकला। वह तेजी से सड़क पर दौड़ने लगा। अंत में वह रुककर सबको हाथ हिलाने लगा।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -22,13 +22,14 @@
           {
             "animation": "run",
             "from": "road_start",
-            "to": "house_2",
-            "duration": 8
+            "to": "road_center",
+            "duration": 5
           },
           {
             "animation": "wave",
-            "location": "house_2",
-            "duration": 3
+            "from": "road_center",
+            "to": "house_2",
+            "duration": 6
           }
         ]
       }
@@ -36,19 +37,19 @@
   },
   "camera": [
     {
-      "type": "wide",
-      "target": "hero",
-      "duration": 4
-    },
-    {
       "type": "follow",
       "target": "hero",
-      "duration": 8
+      "duration": 5
+    },
+    {
+      "type": "side_tracking",
+      "target": "hero",
+      "duration": 5
     },
     {
       "type": "closeup",
       "target": "hero",
-      "duration": 3
+      "duration": 5
     }
   ]
 }
