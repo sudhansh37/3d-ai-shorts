@@ -1,12 +1,12 @@
 {
-  "title": "Hero Ka Safar - Ek Nayi Subah",
-  "description": "Hero apne ghar se nikal kar road par daudta hai aur nayi manzil ki taraf badhta hai. #Shorts #Story #Hero",
+  "title": "Ghar se sadak tak ka safar",
+  "description": "Hero nikla apne ghar se aur daudte hue pahuncha naye raste par! #Shorts #Story #Adventure",
   "tags": [
-    "story",
     "hero",
-    "animation"
+    "running",
+    "story"
   ],
-  "narration": "हिरो अपने घर से बाहर निकलता है। वो तेज़ी से सड़क पर दौड़ता है और दूसरे घर के सामने जाकर हाथ हिलता है।",
+  "narration": "hero apne ghar se bahar nikalta hai. woh tezi se road par daudne lagta hai. aakhir mein woh doosre ghar ke saamne khokar haath hilata hai.",
   "scene": {
     "duration": 15,
     "characters": [
@@ -16,19 +16,18 @@
           {
             "animation": "walk",
             "from": "house_1",
-            "to": "road_center",
+            "to": "road_start",
             "duration": 4
           },
           {
             "animation": "run",
-            "from": "road_center",
-            "to": "road_end",
+            "from": "road_start",
+            "to": "road_center",
             "duration": 6
           },
           {
             "animation": "wave",
-            "from": "road_end",
-            "to": "house_2",
+            "location": "road_center",
             "duration": 5
           }
         ]
@@ -39,7 +38,7 @@
     {
       "type": "wide",
       "target": "hero",
-      "duration": 4
+      "duration": 5
     },
     {
       "type": "follow",
@@ -49,7 +48,7 @@
     {
       "type": "closeup",
       "target": "hero",
-      "duration": 5
+      "duration": 4
     }
   ]
 }
