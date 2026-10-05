@@ -1,12 +1,12 @@
 {
-  "title": "Ghar se road tak ka safar #Shorts #Story #Drama",
-  "description": "Ek chhota sa safar ghar se road aur fir naye ghar tak. #DailyVlog #Storytime #Animation",
+  "title": "Ghar se road tak ka safar",
+  "description": "Hero nikla apne ghar se aur road par daudte hue pahuncha naye ghar ke paas! #shorts #story #adventure",
   "tags": [
-    "animation",
+    "shorts",
     "story",
-    "shorts"
+    "adventure"
   ],
-  "narration": "वीर अपने घर से बाहर निकला। वो तेजी से सड़क पर दौड़ा। फिर उसने दूसरे घर के सामने रुककर हाथ हिलाया।",
+  "narration": "हिरो अपने घर से बाहर निकलता है। वह जोश के साथ सड़क पर दौड़ने लगता है। अंत में दूसरे घर के सामने पहुंचकर वह हाथ हिलाता है।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -17,24 +17,18 @@
             "animation": "walk",
             "from": "house_1",
             "to": "road_start",
-            "duration": 4
+            "duration": 3
           },
           {
             "animation": "run",
             "from": "road_start",
-            "to": "road_center",
-            "duration": 4
-          },
-          {
-            "animation": "walk",
-            "from": "road_center",
             "to": "house_2",
-            "duration": 4
+            "duration": 7
           },
           {
             "animation": "wave",
             "location": "house_2",
-            "duration": 3
+            "duration": 5
           }
         ]
       }
