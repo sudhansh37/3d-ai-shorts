@@ -1,12 +1,12 @@
 {
-  "title": "Hero Ki Subah Ki Daud | Short Story",
-  "description": "Dekhiye hero ki exciting subah ka safar aur uska adventure! #Shorts #Story #Adventure",
+  "title": "Hero Ki Subah Ki Daud",
+  "description": "Hero ghar se nikal kar road par bhaga aur dost ke ghar ke paas wave kiya. #Story #Animation #Shorts",
   "tags": [
-    "shorts",
+    "animation",
     "story",
-    "adventure"
+    "shorts"
   ],
-  "narration": "hero apne ghar se bahar nikalta hai. vah tezi se sadak par daudne lagta hai. ant mein vah doosre ghar ke paas pahunchkar haath hilata hai.",
+  "narration": "एक सुबह हीरो अपने घर से बाहर निकला। वह तेजी से सड़क पर दौड़ा और दूसरे घर के सामने जाकर हाथ हिलाने लगा।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -27,7 +27,7 @@
           },
           {
             "animation": "wave",
-            "location": "house_2",
+            "location": "road_end",
             "duration": 5
           }
         ]
@@ -36,7 +36,7 @@
   },
   "camera": [
     {
-      "type": "wide",
+      "type": "medium",
       "target": "hero",
       "duration": 4
     },
