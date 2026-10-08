@@ -1,15 +1,14 @@
 {
-  "title": "Hero Ka Safar - YouTube Short",
-  "description": "Hero ghar se nikal kar road par daudta hai aur dost ko wave karta hai. #story #shorts #animation",
+  "title": "Hero Ka Chhota Adventure",
+  "description": "3D animated short - hero ghar se nikal kar road par daudta hai aur haath hilata hai! #shorts #3d #animation",
   "tags": [
-    "story",
     "shorts",
-    "animation",
-    "hero"
+    "3danimation",
+    "blender"
   ],
-  "narration": "हिरो अपने घर से बाहर निकला। वह तेजी से रोड की तरफ दौड़ा और दूसरे घर के पास पहुंचकर हाथ हिलाने लगा।",
+  "narration": "हीरो अपने घर से बाहर निकलता है। फिर वह सड़क पर तेज़ी से दौड़ता है। और आखिर में, अपने दोस्त को खुशी से हाथ हिलाता है!",
   "scene": {
-    "duration": 15,
+    "duration": 11,
     "characters": [
       {
         "id": "hero",
@@ -23,13 +22,13 @@
           {
             "animation": "run",
             "from": "road_center",
-            "to": "road_end",
-            "duration": 6
+            "to": "house_2",
+            "duration": 4
           },
           {
             "animation": "wave",
-            "location": "road_end",
-            "duration": 5
+            "location": "house_2",
+            "duration": 3
           }
         ]
       }
@@ -39,17 +38,17 @@
     {
       "type": "wide",
       "target": "hero",
-      "duration": 5
+      "duration": 3
     },
     {
       "type": "follow",
       "target": "hero",
-      "duration": 6
+      "duration": 5
     },
     {
       "type": "closeup",
       "target": "hero",
-      "duration": 4
+      "duration": 3
     }
   ]
 }
