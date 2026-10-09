@@ -1,12 +1,13 @@
 {
-  "title": "Hero Ki Subah Ki Daud #Shorts #Hero #Morning",
-  "description": "Hero ghar se nikal kar road par daudta hai aur dost ko wave karta hai. #Viral #Trending #Animation",
+  "title": "Hero Ki Daur #Shorts #Hero #Story",
+  "description": "Ek choti si kahani hero ki daur ki. #story #shorts #animation",
   "tags": [
+    "story",
     "shorts",
     "animation",
-    "story"
+    "hero"
   ],
-  "narration": "हिरो अपने घर से बाहर निकला। वह तेजी से सड़क पर दौड़ा और दूसरे घर के पास जाकर हाथ हिलाने लगा।",
+  "narration": "हिरो अपने घर से बाहर निकलता है। वो तेज़ी से सड़क पर दौड़ता है। फिर दूसरे घर के सामने रुककर सबको हाथिलाता है।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -16,18 +17,18 @@
           {
             "animation": "walk",
             "from": "house_1",
-            "to": "road_start",
+            "to": "road_center",
             "duration": 4
           },
           {
             "animation": "run",
-            "from": "road_start",
-            "to": "road_center",
+            "from": "road_center",
+            "to": "road_end",
             "duration": 6
           },
           {
             "animation": "wave",
-            "location": "road_center",
+            "location": "road_end",
             "duration": 5
           }
         ]
@@ -36,19 +37,19 @@
   },
   "camera": [
     {
-      "type": "wide",
-      "target": "hero",
-      "duration": 5
-    },
-    {
       "type": "follow",
       "target": "hero",
       "duration": 6
     },
     {
-      "type": "closeup",
+      "type": "side_tracking",
       "target": "hero",
       "duration": 4
+    },
+    {
+      "type": "closeup",
+      "target": "hero",
+      "duration": 5
     }
   ]
 }
