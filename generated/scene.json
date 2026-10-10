@@ -1,13 +1,12 @@
 {
-  "title": "Hero Ki Daur #Shorts #Hero #Story",
-  "description": "Ek choti si kahani hero ki daur ki. #story #shorts #animation",
+  "title": "Hero ki subah ki sair aur dosti",
+  "description": "Hero apne ghar se nikal kar road par daudta hai aur dost ko hello bolta hai. #Story #Shorts #Animation",
   "tags": [
     "story",
-    "shorts",
     "animation",
-    "hero"
+    "shorts"
   ],
-  "narration": "हिरो अपने घर से बाहर निकलता है। वो तेज़ी से सड़क पर दौड़ता है। फिर दूसरे घर के सामने रुककर सबको हाथिलाता है।",
+  "narration": "ஹீரோ apne ghar se bahar nikalta hai. Woh tezi se road par daudne lagta hai. Aant mein, woh doosre ghar ke paas ruk kar haath hilata hai.",
   "scene": {
     "duration": 15,
     "characters": [
@@ -17,18 +16,18 @@
           {
             "animation": "walk",
             "from": "house_1",
-            "to": "road_center",
+            "to": "road_start",
             "duration": 4
           },
           {
             "animation": "run",
-            "from": "road_center",
-            "to": "road_end",
+            "from": "road_start",
+            "to": "road_center",
             "duration": 6
           },
           {
             "animation": "wave",
-            "location": "road_end",
+            "location": "road_center",
             "duration": 5
           }
         ]
@@ -37,14 +36,14 @@
   },
   "camera": [
     {
+      "type": "wide",
+      "target": "hero",
+      "duration": 4
+    },
+    {
       "type": "follow",
       "target": "hero",
       "duration": 6
-    },
-    {
-      "type": "side_tracking",
-      "target": "hero",
-      "duration": 4
     },
     {
       "type": "closeup",
