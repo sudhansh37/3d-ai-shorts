@@ -1,12 +1,12 @@
 {
-  "title": "Hero Ki Daur #Shorts #Story #Hero",
-  "description": "Ek choti si kahani hero ki daur ki. #Story #Animation #Viral",
+  "title": "Ghar Se Road Tak Ka Safar",
+  "description": "Ek chhota sa safar ghar se road aur fir naye ghar tak. #Story #Shorts #Animation",
   "tags": [
     "story",
     "animation",
-    "hero"
+    "hindi"
   ],
-  "narration": "हिरो अपने घर से बाहर निकला। वह तेजी से सड़क पर दौड़ने लगा। फिर वह दूसरे घर के सामने रुका और हाथ हिलाया।",
+  "narration": "वीर अपने घर से बाहर निकला। वो तेजी से सड़क पर दौड़ने लगा। फिर दूसरे घर के सामने पहुंचकर उसने हाथ हिलाया।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -16,19 +16,25 @@
           {
             "animation": "walk",
             "from": "house_1",
-            "to": "road_center",
-            "duration": 4
+            "to": "road_start",
+            "duration": 3
           },
           {
             "animation": "run",
+            "from": "road_start",
+            "to": "road_center",
+            "duration": 5
+          },
+          {
+            "animation": "walk",
             "from": "road_center",
             "to": "house_2",
-            "duration": 6
+            "duration": 4
           },
           {
             "animation": "wave",
             "location": "house_2",
-            "duration": 5
+            "duration": 3
           }
         ]
       }
@@ -38,12 +44,12 @@
     {
       "type": "wide",
       "target": "hero",
-      "duration": 5
+      "duration": 4
     },
     {
       "type": "follow",
       "target": "hero",
-      "duration": 6
+      "duration": 7
     },
     {
       "type": "closeup",
