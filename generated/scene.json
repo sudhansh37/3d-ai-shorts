@@ -1,12 +1,12 @@
 {
-  "title": "Hero Ka Safar #shorts #story #animation",
-  "description": "Hero ghar se nikal kar road par daudta hai aur dost ko hello bolta hai. #StoryTime #HindiAnimation #Shorts",
+  "title": "Hero ki subah ki sair aur dosti",
+  "description": "Hero apne ghar se nikal kar road par daudta hai aur dost ko hello bolta hai. #Story #AnimatedShorts #HindiStories",
   "tags": [
     "story",
     "animation",
-    "shorts"
+    "hindi"
   ],
-  "narration": "एक दिन हीरो अपने घर से बाहर निकला। वह तेजी से सड़क पर दौड़ने लगा और दूसरे घर के पास जाकर हाथ हिलाने लगा।",
+  "narration": "hero apne ghar se bahar nikalta hai. vah tezi se road par daudne lagta hai. aakhir mein vah doosre ghar ke paas ruk kar haath hilata hai.",
   "scene": {
     "duration": 15,
     "characters": [
@@ -22,13 +22,13 @@
           {
             "animation": "run",
             "from": "road_start",
-            "to": "road_center",
-            "duration": 6
+            "to": "house_2",
+            "duration": 7
           },
           {
             "animation": "wave",
-            "location": "road_center",
-            "duration": 5
+            "location": "house_2",
+            "duration": 4
           }
         ]
       }
@@ -36,9 +36,9 @@
   },
   "camera": [
     {
-      "type": "medium",
+      "type": "wide",
       "target": "hero",
-      "duration": 4
+      "duration": 5
     },
     {
       "type": "follow",
@@ -48,7 +48,7 @@
     {
       "type": "closeup",
       "target": "hero",
-      "duration": 5
+      "duration": 4
     }
   ]
 }
