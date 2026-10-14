@@ -1,14 +1,14 @@
 {
-  "title": "Hero Ka Chhota Adventure",
-  "description": "3D animated short - hero ghar se nikal kar road par daudta hai aur haath hilata hai! #shorts #3d #animation",
+  "title": "Hero ki subah ki sair aur dosti",
+  "description": "Hero apne ghar se nikal kar road par daudta hai aur dost ko hello bolta hai. #shorts #story #animation",
   "tags": [
     "shorts",
-    "3danimation",
-    "blender"
+    "story",
+    "animation"
   ],
-  "narration": "हीरो अपने घर से बाहर निकलता है। फिर वह सड़क पर तेज़ी से दौड़ता है। और आखिर में, अपने दोस्त को खुशी से हाथ हिलाता है!",
+  "narration": "ஹீரோ apne ghar se bahar nikalta hai. Woh tezi se road par daudta hai aur doosre ghar ke paas pahunch kar haath hilata hai.",
   "scene": {
-    "duration": 11,
+    "duration": 15,
     "characters": [
       {
         "id": "hero",
@@ -23,12 +23,12 @@
             "animation": "run",
             "from": "road_center",
             "to": "house_2",
-            "duration": 4
+            "duration": 6
           },
           {
             "animation": "wave",
             "location": "house_2",
-            "duration": 3
+            "duration": 5
           }
         ]
       }
@@ -38,17 +38,17 @@
     {
       "type": "wide",
       "target": "hero",
-      "duration": 3
+      "duration": 4
     },
     {
       "type": "follow",
       "target": "hero",
-      "duration": 5
+      "duration": 6
     },
     {
       "type": "closeup",
       "target": "hero",
-      "duration": 3
+      "duration": 5
     }
   ]
 }
