@@ -1,12 +1,12 @@
 {
-  "title": "Hero ki subah ki sair",
-  "description": "Hero ghar se nikal kar road par daudta hai aur dost ko wave karta hai. #shorts #story #animation",
+  "title": "Ghar Se Road Tak Ka Safar",
+  "description": "Ek hero ki choti si kahani, ghar se road aur fir naye ghar tak. #shorts #story #animation",
   "tags": [
-    "shorts",
     "story",
-    "animation"
+    "animation",
+    "hindi"
   ],
-  "narration": "हीरो अपने घर से बाहर निकला। वह तेजी से सड़क पर दौड़ने लगा और रुककर हाथ हिलाने लगा।",
+  "narration": "एक हीरो अपने घर से बाहर निकलता है। वो तेज़ी से सड़क की तरफ दौड़ता है। फिर दूसरे घर के सामने रुक कर हाथ हिलता है।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -16,20 +16,20 @@
           {
             "animation": "walk",
             "from": "house_1",
-            "to": "road_center",
-            "duration": 5
+            "to": "road_start",
+            "duration": 4
           },
           {
             "animation": "run",
-            "from": "road_center",
-            "to": "road_end",
+            "from": "road_start",
+            "to": "road_center",
             "duration": 6
           },
           {
             "animation": "wave",
-            "from": "road_end",
+            "from": "road_center",
             "to": "house_2",
-            "duration": 4
+            "duration": 5
           }
         ]
       }
@@ -39,7 +39,7 @@
     {
       "type": "wide",
       "target": "hero",
-      "duration": 5
+      "duration": 4
     },
     {
       "type": "follow",
@@ -49,7 +49,7 @@
     {
       "type": "closeup",
       "target": "hero",
-      "duration": 4
+      "duration": 5
     }
   ]
 }
