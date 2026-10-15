@@ -1,12 +1,12 @@
 {
-  "title": "Hero Ki Subah Ki Daud #Shorts #Hero #Morning",
-  "description": "Hero ghar se nikal kar road par daudta hai aur dost ko wave karta hai. #story #animation #viral",
+  "title": "Hero ki subah ki sair",
+  "description": "Hero ghar se nikal kar road par daudta hai aur dost ko wave karta hai. #shorts #story #animation",
   "tags": [
-    "hero",
-    "running",
+    "shorts",
+    "story",
     "animation"
   ],
-  "narration": "हीरो अपने घर से बाहर निकलता है और तेजी से रोड पर दौड़ता है। फिर दूसरे घर के सामने रुककर सबका हाथ हिलाकर अभिवादन करता है।",
+  "narration": "हीरो अपने घर से बाहर निकला। वह तेजी से सड़क पर दौड़ने लगा और रुककर हाथ हिलाने लगा।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -23,12 +23,13 @@
             "animation": "run",
             "from": "road_center",
             "to": "road_end",
-            "duration": 5
+            "duration": 6
           },
           {
             "animation": "wave",
-            "location": "road_end",
-            "duration": 5
+            "from": "road_end",
+            "to": "house_2",
+            "duration": 4
           }
         ]
       }
@@ -43,12 +44,12 @@
     {
       "type": "follow",
       "target": "hero",
-      "duration": 5
+      "duration": 6
     },
     {
       "type": "closeup",
       "target": "hero",
-      "duration": 5
+      "duration": 4
     }
   ]
 }
