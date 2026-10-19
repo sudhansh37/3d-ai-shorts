@@ -1,12 +1,12 @@
 {
-  "title": "Hero ki subah ki sair aur dosti",
-  "description": "Hero apne ghar se nikal kar road par daudta hai aur dost ko hello bolta hai. #Story #Shorts #Animation",
+  "title": "Hero Ki Doud - Ek Naya Safar",
+  "description": "Dekhiye hero ka naya adventure! #Shorts #Story #Hero",
   "tags": [
+    "shorts",
     "story",
-    "animation",
-    "hindi"
+    "adventure"
   ],
-  "narration": "ஹீரோ apne ghar se bahar nikalta hai. Phir woh tezi se road par daudta hai aur doosre ghar ke paas pahunch kar haath hilata hai.",
+  "narration": "ஹீரோ அவுட்ஹவுஸ்ல இருந்து வெளிய வந்து வேகமா ஓடுறான். ரோடு தாண்டி இன்னொரு வீட்டுக்கிட்ட நின்னு கை அசைக்கிறான்.",
   "scene": {
     "duration": 15,
     "characters": [
@@ -17,24 +17,24 @@
             "animation": "walk",
             "from": "house_1",
             "to": "road_start",
-            "duration": 4
+            "duration": 3
           },
           {
             "animation": "run",
             "from": "road_start",
             "to": "road_center",
-            "duration": 5
+            "duration": 4
           },
           {
             "animation": "walk",
             "from": "road_center",
             "to": "house_2",
-            "duration": 3
+            "duration": 4
           },
           {
             "animation": "wave",
             "location": "house_2",
-            "duration": 3
+            "duration": 4
           }
         ]
       }
@@ -44,7 +44,7 @@
     {
       "type": "wide",
       "target": "hero",
-      "duration": 5
+      "duration": 4
     },
     {
       "type": "follow",
@@ -54,7 +54,7 @@
     {
       "type": "closeup",
       "target": "hero",
-      "duration": 3
+      "duration": 4
     }
   ]
 }
