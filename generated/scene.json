@@ -1,12 +1,12 @@
 {
-  "title": "Hero Ki Doud - Ek Naya Safar",
-  "description": "Dekhiye hero ka naya adventure! #Shorts #Story #Hero",
+  "title": "Ghar se Road Tak ka Safar",
+  "description": "Ek chhota sa safar ghar se road tak ka. #Shorts #Animation #Story",
   "tags": [
-    "shorts",
+    "animation",
     "story",
-    "adventure"
+    "shorts"
   ],
-  "narration": "ஹீரோ அவுட்ஹவுஸ்ல இருந்து வெளிய வந்து வேகமா ஓடுறான். ரோடு தாண்டி இன்னொரு வீட்டுக்கிட்ட நின்னு கை அசைக்கிறான்.",
+  "narration": "हिरो अपने घर से बाहर निकला। वह तेजी से रोड पर दौड़ने लगा। फिर दूसरे घर के सामने जाकर उसने हाथ हिलाया।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -16,25 +16,20 @@
           {
             "animation": "walk",
             "from": "house_1",
-            "to": "road_start",
-            "duration": 3
+            "to": "road_center",
+            "duration": 5
           },
           {
             "animation": "run",
-            "from": "road_start",
-            "to": "road_center",
-            "duration": 4
-          },
-          {
-            "animation": "walk",
             "from": "road_center",
-            "to": "house_2",
-            "duration": 4
+            "to": "road_end",
+            "duration": 5
           },
           {
             "animation": "wave",
-            "location": "house_2",
-            "duration": 4
+            "from": "road_end",
+            "to": "house_2",
+            "duration": 5
           }
         ]
       }
@@ -44,17 +39,17 @@
     {
       "type": "wide",
       "target": "hero",
-      "duration": 4
+      "duration": 5
     },
     {
       "type": "follow",
       "target": "hero",
-      "duration": 7
+      "duration": 5
     },
     {
       "type": "closeup",
       "target": "hero",
-      "duration": 4
+      "duration": 5
     }
   ]
 }
