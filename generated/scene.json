@@ -1,12 +1,12 @@
 {
-  "title": "Hero Ka Safar",
-  "description": "Hero ghar se nikal kar road par bhaga aur naye ghar ke paas pahunch gaya. #HeroJourney #Shorts #Animation",
+  "title": "Hero Ki Daur #Shorts #Hero #Animation",
+  "description": "Hero ghar se nikal kar road par daudta hai aur dost ko wave karta hai. #story #animated #shorts",
   "tags": [
-    "HeroJourney",
-    "Animation",
-    "Shorts"
+    "hero",
+    "animation",
+    "story"
   ],
-  "narration": "हीरो अपने घर से बाहर निकला। वह तेजी से रोड पर दौड़ने लगा। फिर वह दूसरे घर के सामने जाकर खड़ा हुआ और हाथ हिलाने लगा।",
+  "narration": "हिरो अपने घर से बाहर निकलता है। वो तेज़ी से सड़क पर दौड़ता है। और फिर दूसरे घर के सामने जाकर हाथ हिलाता है।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -17,18 +17,18 @@
             "animation": "walk",
             "from": "house_1",
             "to": "road_start",
-            "duration": 3
+            "duration": 4
           },
           {
             "animation": "run",
             "from": "road_start",
-            "to": "road_center",
-            "duration": 5
+            "to": "house_2",
+            "duration": 7
           },
           {
             "animation": "wave",
-            "location": "road_center",
-            "duration": 7
+            "location": "house_2",
+            "duration": 4
           }
         ]
       }
@@ -38,17 +38,17 @@
     {
       "type": "wide",
       "target": "hero",
-      "duration": 5
+      "duration": 4
     },
     {
       "type": "follow",
       "target": "hero",
-      "duration": 5
+      "duration": 7
     },
     {
       "type": "closeup",
       "target": "hero",
-      "duration": 5
+      "duration": 4
     }
   ]
 }
