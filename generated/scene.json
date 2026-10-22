@@ -1,12 +1,12 @@
 {
-  "title": "Hero Ki Daur #Shorts #Hero #Animation",
-  "description": "Hero ghar se nikal kar road par daudta hai aur dost ko wave karta hai. #story #animated #shorts",
+  "title": "Hero ki subah ki sair aur dosti",
+  "description": "Hero apne ghar se nikal kar road par daudta hai aur dost ke ghar ke paas haath hilata hai. #HeroLife #Shorts #DailyVibe",
   "tags": [
     "hero",
-    "animation",
-    "story"
+    "story",
+    "animation"
   ],
-  "narration": "हिरो अपने घर से बाहर निकलता है। वो तेज़ी से सड़क पर दौड़ता है। और फिर दूसरे घर के सामने जाकर हाथ हिलाता है।",
+  "narration": "ஹீரோ apne ghar se bahar nikalta hai. Vah tezi se road par daudta hai aur doosre ghar ke paas pahunch kar sabko haath hilata hai.",
   "scene": {
     "duration": 15,
     "characters": [
@@ -23,12 +23,12 @@
             "animation": "run",
             "from": "road_start",
             "to": "house_2",
-            "duration": 7
+            "duration": 8
           },
           {
             "animation": "wave",
             "location": "house_2",
-            "duration": 4
+            "duration": 3
           }
         ]
       }
@@ -43,12 +43,12 @@
     {
       "type": "follow",
       "target": "hero",
-      "duration": 7
+      "duration": 8
     },
     {
       "type": "closeup",
       "target": "hero",
-      "duration": 4
+      "duration": 3
     }
   ]
 }
