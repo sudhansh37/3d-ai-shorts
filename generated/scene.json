@@ -1,13 +1,13 @@
 {
-  "title": "Hero Ki Daur #Shorts",
-  "description": "Hero ghar se bahar nikal kar road par daudta hai aur dost ke ghar ke paas pahunch jata hai. #Hero #Story #Shorts",
+  "title": "Hero Ki Subah Ki Daud | Short Story",
+  "description": "Dekhiye hero ki exciting subah ki daud aur uski kahani! #HindiStories #Shorts #Animation",
   "tags": [
-    "story",
-    "hero",
-    "running",
-    "shorts"
+    "HindiStories",
+    "Shorts",
+    "Animation",
+    "Hero"
   ],
-  "narration": "अचानक हीरो घर के दरवाजे से बाहर निकलता है। वो तेजी से सड़क पर दौड़ने लगता है। और फिर दूसरे घर के सामने जाकर हाथ हिलता है।",
+  "narration": "हिरो अपने घर से बाहर निकला। वह तेजी से सड़क पर दौड़ा और दूसरे घर के सामने जाकर हाथ हिलने लगा।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -39,7 +39,7 @@
     {
       "type": "wide",
       "target": "hero",
-      "duration": 4
+      "duration": 5
     },
     {
       "type": "follow",
@@ -49,7 +49,7 @@
     {
       "type": "closeup",
       "target": "hero",
-      "duration": 5
+      "duration": 4
     }
   ]
 }
