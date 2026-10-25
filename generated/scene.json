@@ -1,12 +1,12 @@
 {
-  "title": "Hero ka naya safar #shorts #story #viral",
-  "description": "Dekhiye hero ka naya adventure! #Shorts #StoryTime #Animation",
+  "title": "Hero Ki Subah Ki Daud | Short Story",
+  "description": "Dekhiye hero kaise ghar se nikal kar road par daudta hai aur dost ko hello kehta hai. #shorts #story #viral",
   "tags": [
     "shorts",
     "story",
-    "animation"
+    "viral"
   ],
-  "narration": "हीरो अपने घर से बाहर निकला। वह तेजी से सड़क की तरफ दौड़ा। और दूसरे घर के सामने पहुंचकर उसने हाथ हिलाया।",
+  "narration": "हिरो अपने घर से बाहर निकला। वह तेजी से सड़क पर दौड़ने लगा। अंत में वह दूसरे घर के सामने रुका और हाथ हिलाया।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -16,19 +16,19 @@
           {
             "animation": "walk",
             "from": "house_1",
-            "to": "road_center",
-            "duration": 4
+            "to": "road_start",
+            "duration": 3
           },
           {
             "animation": "run",
-            "from": "road_center",
-            "to": "road_end",
+            "from": "road_start",
+            "to": "road_center",
             "duration": 6
           },
           {
             "animation": "wave",
-            "location": "house_2",
-            "duration": 5
+            "location": "road_center",
+            "duration": 6
           }
         ]
       }
@@ -38,12 +38,12 @@
     {
       "type": "wide",
       "target": "hero",
-      "duration": 5
+      "duration": 4
     },
     {
       "type": "follow",
       "target": "hero",
-      "duration": 5
+      "duration": 6
     },
     {
       "type": "closeup",
