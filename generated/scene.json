@@ -1,12 +1,12 @@
 {
-  "title": "Ghar Se Nikal Kar Dost Ke Ghar Tak Ki Daud",
-  "description": "Hero ghar se nikal kar road par bhaga aur dost ke ghar ke samne wave kiya! #Shorts #Story #Adventure",
+  "title": "Hero Ki Daur #Shorts",
+  "description": "Dekhiye kaise hero ghar se nikal kar road par daudta hai. #Story #Hindi #Animation",
   "tags": [
+    "animation",
     "story",
-    "adventure",
-    "running"
+    "hindi"
   ],
-  "narration": "हीरो अपने घर से बाहर निकला। वह तेजी से रोड पर दौड़ने लगा। फिर दूसरे घर के सामने पहुंचकर उसने हाथ हिलाया।",
+  "narration": "हीरो अपने घर से बाहर निकला। वह तेजी से सड़क की तरफ़ दौड़ा। और दूसरे घर के पास रुककर उसने हाथ हिलाया।",
   "scene": {
     "duration": 15,
     "characters": [
@@ -23,10 +23,10 @@
             "animation": "run",
             "from": "road_start",
             "to": "road_center",
-            "duration": 4
+            "duration": 5
           },
           {
-            "animation": "run",
+            "animation": "walk",
             "from": "road_center",
             "to": "house_2",
             "duration": 4
@@ -34,7 +34,7 @@
           {
             "animation": "wave",
             "location": "house_2",
-            "duration": 4
+            "duration": 3
           }
         ]
       }
@@ -49,12 +49,12 @@
     {
       "type": "follow",
       "target": "hero",
-      "duration": 6
+      "duration": 5
     },
     {
       "type": "closeup",
       "target": "hero",
-      "duration": 5
+      "duration": 6
     }
   ]
 }
